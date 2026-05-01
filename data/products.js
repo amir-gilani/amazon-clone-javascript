@@ -1,3 +1,5 @@
+// This part of code for save products data from amazon.html - Save the data / data structure
+
 const products = [
   {
     id: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
@@ -7,7 +9,7 @@ const products = [
       stars: 4.5,
       count: 87
     },
-    priceCents: 1090,
+    priceCents: 1090, // As a reminder $1 = 100 cents 
     keywords: [
       "socks",
       "sports",

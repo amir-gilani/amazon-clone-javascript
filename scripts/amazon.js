@@ -65,10 +65,10 @@ document
       const { productId } = button.dataset; // Allows us to attach any information to an element
       let matchingItem;
 
-      cart.forEach( cartItem => {
+      cart.forEach((cartItem) => {
         if (cartItem.productId === productId) {
           matchingItem = cartItem;
-        }  
+        }
       });
 
       if (matchingItem) {
@@ -76,8 +76,16 @@ document
       } else {
         cart.push({
           productId,
-          quantity: 1
+          quantity: 1,
         });
       }
+
+      let cartQuantity = 0; //Use accumulator pattern for save all quantity inside
+
+      cart.forEach((cartItem) => {
+        cartQuantity += cartItem.quantity;
+      });
+
+      document.querySelector(".js-cart-quantity").innerHTML = cartQuantity;
     });
   });

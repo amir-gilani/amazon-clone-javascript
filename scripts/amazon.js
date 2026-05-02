@@ -1,5 +1,5 @@
 //Modules
-import { cart } from "../data/cart.js";
+import { cart, addToCart, addToCartAnimation, selectorQunatityDropdown } from "../data/cart.js";
 import { products } from "../data/products.js";
 
 //accumulator pattern for save all the html data inside
@@ -64,8 +64,17 @@ products.forEach((product) => {
 //Render all products to the grid container
 document.querySelector(".js-products-grid").innerHTML = productsHTML;
 
-//Single timeout ID - clears previous timeout on every click
-let cartTimeoutId;
+function updateCartQuantity() {
+  //Accumulator for total cart items
+  let cartQuantity = 0; 
+
+  cart.forEach((cartItem) => {
+    cartQuantity += cartItem.quantity;
+  });
+
+  //Update cart counter in header
+  document.querySelector(".js-cart-quantity").innerHTML = cartQuantity; 
+}
 
 //Attach click event to ALL "Add to Cart" buttons
 document
@@ -74,58 +83,11 @@ document
     button.addEventListener("click", () => {
       //Extract product ID from button data attribute
       const { productId } = button.dataset;
+      const quantity = selectorQunatityDropdown(productId);
 
-      //Get SELECTED quantity value from dropdown
-      const quantitySelectorElm = document.querySelector(
-        `.js-quantity-selector-${productId}`,
-      ).value; 
-
-      //Convert string quantity to number
-      const quantity = Number(quantitySelectorElm);
-
-      let matchingItem;
-
-      //Check if product already exists in cart
-      cart.forEach((cartItem) => {
-        if (cartItem.productId === productId) {
-          matchingItem = cartItem;
-        }
-      });
-
-      //Update quantity if exists, or add new item
-      if (matchingItem) {
-        matchingItem.quantity += quantity;
-      } else {
-        cart.push({
-          productId,
-          quantity,
-        });
-      }
-
-      //Accumulator for total cart items
-      let cartQuantity = 0; 
-
-      cart.forEach((cartItem) => {
-        cartQuantity += cartItem.quantity;
-      });
-
-      //Update cart counter in header
-      document.querySelector(".js-cart-quantity").innerHTML = cartQuantity; 
-
-      //FIXED: Target correct "Added" element per product
-      const addToCartElm = document.querySelector(`.js-added-to-cart-${productId}`);
-
-      //Show "Added" animation
-      addToCartElm.classList.add('js-added-to-cart');
-
-      //FIXED: Clear PREVIOUS timeout (prevents overlap)
-      if (cartTimeoutId) {
-        clearTimeout(cartTimeoutId);
-      }
-
-      //Set NEW 2-second timeout (always 2s from last click)
-      cartTimeoutId = setTimeout(() => {
-        addToCartElm.classList.remove('js-added-to-cart');
-      }, 2000);
+      selectorQunatityDropdown(productId);
+      addToCart(productId, quantity);
+      updateCartQuantity();
+      addToCartAnimation(productId);
     });
   });

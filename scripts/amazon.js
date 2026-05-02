@@ -1,6 +1,6 @@
 //Modules
 import { cart } from "../data/cart.js";
-
+import { products } from "../data/products.js";
 
 //accumulator pattern for save all the html data inside
 let productsHTML = "";

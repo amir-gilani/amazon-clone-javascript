@@ -27,7 +27,7 @@ products.forEach((product) => {
       </div>
 
       <div class="product-quantity-container">
-        <select>
+        <select class= "js-quantity-selector-${product.id}">
           <option selected value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
@@ -63,6 +63,11 @@ document
   .forEach((button) => {
     button.addEventListener("click", () => {
       const { productId } = button.dataset; // Allows us to attach any information to an element
+      
+      const quantitySelectorElm = document.querySelector(`.js-quantity-selector-${productId}`)
+        .value; //This code for take quantity from selector quantity
+      const quantity = Number(quantitySelectorElm);
+
       let matchingItem;
 
       cart.forEach((cartItem) => {
@@ -72,11 +77,11 @@ document
       });
 
       if (matchingItem) {
-        matchingItem.quantity += 1;
+        matchingItem.quantity += quantity;
       } else {
         cart.push({
           productId,
-          quantity: 1,
+          quantity
         });
       }
 
@@ -86,6 +91,6 @@ document
         cartQuantity += cartItem.quantity;
       });
 
-      document.querySelector(".js-cart-quantity").innerHTML = cartQuantity;
+      document.querySelector(".js-cart-quantity").innerHTML = cartQuantity; //show cart qantity in header    
     });
   });

@@ -1,4 +1,5 @@
-let productsHTML = ""; //Use accumulator pattern for save all the html data inside
+//accumulator pattern for save all the html data inside
+let productsHTML = "";
 
 products.forEach((product) => {
   const { image, name, rating, priceCents } = product;
@@ -43,7 +44,7 @@ products.forEach((product) => {
 
       <div class="product-spacer"></div>
 
-      <div class="added-to-cart">
+      <div class="added-to-cart js-added-to-cart-${product.id}">
         <img src="images/icons/checkmark.png">
         Added
       </div>
@@ -56,41 +57,71 @@ products.forEach((product) => {
   `;
 });
 
+//Render all products to the grid container
 document.querySelector(".js-products-grid").innerHTML = productsHTML;
 
+//Single timeout ID - clears previous timeout on every click
+let cartTimeoutId;
+
+//Attach click event to ALL "Add to Cart" buttons
 document
-  .querySelectorAll(".js-add-to-cart") // For each "add to cart" button create add eventListener.
+  .querySelectorAll(".js-add-to-cart") 
   .forEach((button) => {
     button.addEventListener("click", () => {
-      const { productId } = button.dataset; // Allows us to attach any information to an element
-      
-      const quantitySelectorElm = document.querySelector(`.js-quantity-selector-${productId}`)
-        .value; //This code for take quantity from selector quantity
+      //Extract product ID from button data attribute
+      const { productId } = button.dataset;
+
+      //Get SELECTED quantity value from dropdown
+      const quantitySelectorElm = document.querySelector(
+        `.js-quantity-selector-${productId}`,
+      ).value; 
+
+      //Convert string quantity to number
       const quantity = Number(quantitySelectorElm);
 
       let matchingItem;
 
+      //Check if product already exists in cart
       cart.forEach((cartItem) => {
         if (cartItem.productId === productId) {
           matchingItem = cartItem;
         }
       });
 
+      //Update quantity if exists, or add new item
       if (matchingItem) {
         matchingItem.quantity += quantity;
       } else {
         cart.push({
           productId,
-          quantity
+          quantity,
         });
       }
 
-      let cartQuantity = 0; //Use accumulator pattern for save all quantity inside
+      //Accumulator for total cart items
+      let cartQuantity = 0; 
 
       cart.forEach((cartItem) => {
         cartQuantity += cartItem.quantity;
       });
 
-      document.querySelector(".js-cart-quantity").innerHTML = cartQuantity; //show cart qantity in header    
+      //Update cart counter in header
+      document.querySelector(".js-cart-quantity").innerHTML = cartQuantity; 
+
+      //FIXED: Target correct "Added" element per product
+      const addToCartElm = document.querySelector(`.js-added-to-cart-${productId}`);
+
+      //Show "Added" animation
+      addToCartElm.classList.add('js-added-to-cart');
+
+      //FIXED: Clear PREVIOUS timeout (prevents overlap)
+      if (cartTimeoutId) {
+        clearTimeout(cartTimeoutId);
+      }
+
+      //Set NEW 2-second timeout (always 2s from last click)
+      cartTimeoutId = setTimeout(() => {
+        addToCartElm.classList.remove('js-added-to-cart');
+      }, 2000);
     });
   });

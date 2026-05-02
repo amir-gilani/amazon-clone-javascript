@@ -658,5 +658,31 @@ const products = [
       "apparel",
       "mens"
     ]
+  },
+  {
+    id: 'bc2147e9-5313-403f-b7cf-a7pde944a955',
+    image: 'images/products/backpack.jpg',
+    name: 'back pack',
+    rating: {
+      stars: 4.5,
+      count: 124
+    },
+    priceCents: 1800,
+    keywords: [
+      "back pack"
+    ]
+  },
+  {
+    id: 'bc28iue9-5323-303l-j7cf-17fde044a955',
+    image: 'images/products/umbrella.jpg',
+    name: 'umbrella',
+    rating: {
+      stars: 4,
+      count: 221
+    },
+    priceCents: 1229,
+    keywords: [
+      'umbrella'
+    ]
   }
 ];

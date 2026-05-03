@@ -1,4 +1,4 @@
-export let cart = [
+export let cart = JSON.parse(localStorage.getItem('cart')) || [
   {
     productId: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
     quantity: 2,
@@ -8,6 +8,10 @@ export let cart = [
     quantity: 1,
   },
 ];
+
+function saveToStorage() {
+  localStorage.setItem('cart', JSON.stringify(cart))
+}
 
 export function addToCart(productId, quantity) {
   let matchingItem;
@@ -28,6 +32,7 @@ export function addToCart(productId, quantity) {
       quantity,
     });
   }
+  saveToStorage();
 }
 
 //Single timeout ID - clears previous timeout on every click
@@ -49,6 +54,8 @@ export function addToCartAnimation(productId) {
   cartTimeoutId = setTimeout(() => {
     addToCartElm.classList.remove("js-added-to-cart");
   }, 2000);
+
+  saveToStorage();
 }
 
 export function selectorQunatityDropdown(productId) {
@@ -72,4 +79,5 @@ export function removeFromCart(productId) {
   });
 
   cart = newCart;
+  saveToStorage();
 }

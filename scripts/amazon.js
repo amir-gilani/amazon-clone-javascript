@@ -83,9 +83,9 @@ document
     button.addEventListener("click", () => {
       //Extract product ID from button data attribute
       const { productId } = button.dataset;
+      //This code for creat "qantity" for addToCart && dropdown quantity
       const quantity = selectorQunatityDropdown(productId);
 
-      selectorQunatityDropdown(productId);
       addToCart(productId, quantity);
       updateCartQuantity();
       addToCartAnimation(productId);

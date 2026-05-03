@@ -1,4 +1,13 @@
-export const cart = [];
+export const cart = [
+  {
+    productId: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
+    quantity: 2,
+  },
+  {
+    productId: "15b6fc6f-327a-4ec4-896f-486349e85a3d",
+    quantity: 1,
+  },
+];
 
 export function addToCart(productId, quantity) {
   let matchingItem;
@@ -29,7 +38,7 @@ export function addToCartAnimation(productId) {
   const addToCartElm = document.querySelector(`.js-added-to-cart-${productId}`);
 
   //Show "Added" animation
-  addToCartElm.classList.add('js-added-to-cart');
+  addToCartElm.classList.add("js-added-to-cart");
 
   //FIXED: Clear PREVIOUS timeout (prevents overlap)
   if (cartTimeoutId) {
@@ -38,7 +47,7 @@ export function addToCartAnimation(productId) {
 
   //Set NEW 2-second timeout (always 2s from last click)
   cartTimeoutId = setTimeout(() => {
-    addToCartElm.classList.remove('js-added-to-cart');
+    addToCartElm.classList.remove("js-added-to-cart");
   }, 2000);
 }
 
@@ -46,7 +55,7 @@ export function selectorQunatityDropdown(productId) {
   //Get SELECTED quantity value from dropdown
   const quantitySelectorElm = document.querySelector(
     `.js-quantity-selector-${productId}`,
-  ).value; 
+  ).value;
 
   //Convert string quantity to number
   const quantity = Number(quantitySelectorElm);

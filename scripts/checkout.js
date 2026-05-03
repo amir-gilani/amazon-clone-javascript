@@ -1,11 +1,11 @@
 import { cart } from "../data/cart.js";
 import { products } from "../data/products.js";
+import { formatCurrency } from "./utils/money.js";
 
-
-let cartSummaryHTML = '';
+let cartSummaryHTML = "";
 
 cart.forEach((cartItem) => {
-  const {quantity, productId} = cartItem;
+  const { quantity, productId } = cartItem;
 
   let matchingProduct;
 
@@ -14,8 +14,7 @@ cart.forEach((cartItem) => {
       matchingProduct = product;
     }
   });
-  const {image, name, priceCents} = matchingProduct;
-
+  const { image, name, priceCents } = matchingProduct;
 
   cartSummaryHTML += `
     <div class="cart-item-container">
@@ -32,7 +31,7 @@ cart.forEach((cartItem) => {
             ${name}
           </div>
           <div class="product-price">
-            $${(priceCents / 100).toFixed(2)}
+            $${formatCurrency(priceCents)}
           </div>
           <div class="product-quantity">
             <span>
@@ -93,8 +92,7 @@ cart.forEach((cartItem) => {
         </div>
       </div>
     </div>
-  `
+  `;
 });
 
-document.querySelector('.js-order-summary')
-  .innerHTML = cartSummaryHTML;
+document.querySelector(".js-order-summary").innerHTML = cartSummaryHTML;

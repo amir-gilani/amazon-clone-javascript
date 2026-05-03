@@ -1,6 +1,12 @@
 //Modules
-import { cart, addToCart, addToCartAnimation, selectorQunatityDropdown } from "../data/cart.js";
+import {
+  cart,
+  addToCart,
+  addToCartAnimation,
+  selectorQunatityDropdown,
+} from "../data/cart.js";
 import { products } from "../data/products.js";
+import { formatCurrency } from "./utils/money.js";
 
 //accumulator pattern for save all the html data inside
 let productsHTML = "";
@@ -28,7 +34,7 @@ products.forEach((product) => {
       </div>
 
       <div class="product-price">
-        $${(priceCents / 100).toFixed(2)}
+        $${formatCurrency(priceCents)}
       </div>
 
       <div class="product-quantity-container">
@@ -66,28 +72,26 @@ document.querySelector(".js-products-grid").innerHTML = productsHTML;
 
 function updateCartQuantity() {
   //Accumulator for total cart items
-  let cartQuantity = 0; 
+  let cartQuantity = 0;
 
   cart.forEach((cartItem) => {
     cartQuantity += cartItem.quantity;
   });
 
   //Update cart counter in header
-  document.querySelector(".js-cart-quantity").innerHTML = cartQuantity; 
+  document.querySelector(".js-cart-quantity").innerHTML = cartQuantity;
 }
 
 //Attach click event to ALL "Add to Cart" buttons
-document
-  .querySelectorAll(".js-add-to-cart") 
-  .forEach((button) => {
-    button.addEventListener("click", () => {
-      //Extract product ID from button data attribute
-      const { productId } = button.dataset;
-      //This code for creat "qantity" for addToCart && dropdown quantity
-      const quantity = selectorQunatityDropdown(productId);
+document.querySelectorAll(".js-add-to-cart").forEach((button) => {
+  button.addEventListener("click", () => {
+    //Extract product ID from button data attribute
+    const { productId } = button.dataset;
+    //This code for creat "qantity" for addToCart && dropdown quantity
+    const quantity = selectorQunatityDropdown(productId);
 
-      addToCart(productId, quantity);
-      updateCartQuantity();
-      addToCartAnimation(productId);
-    });
+    addToCart(productId, quantity);
+    updateCartQuantity();
+    addToCartAnimation(productId);
   });
+});

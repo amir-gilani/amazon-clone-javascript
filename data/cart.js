@@ -54,8 +54,6 @@ export function addToCartAnimation(productId) {
   cartTimeoutId = setTimeout(() => {
     addToCartElm.classList.remove("js-added-to-cart");
   }, 2000);
-
-  saveToStorage();
 }
 
 export function selectorQunatityDropdown(productId) {

@@ -85,7 +85,11 @@ document.querySelectorAll(".js-add-to-cart").forEach((button) => {
     const { productId } = button.dataset;
     //This code for creat "qantity" for addToCart && dropdown quantity
     const quantity = selectorQunatityDropdown(productId);
-
+    document
+      .querySelectorAll(".js-added-to-cart")
+      .forEach((el) => el.classList.remove("js-added-to-cart"));
+    
+    
     addToCart(productId, quantity);
     updateCartQuantity();
     addToCartAnimation(productId);

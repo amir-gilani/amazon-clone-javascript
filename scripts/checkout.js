@@ -133,9 +133,8 @@ function checkOutPage() {
         `.js-cart-item-container-${productId}`,
       );
 
-      container.classList.add("is-editing-qunatity"); // ✅ is-editing-qunatity (qunatity غلط بود)
+      container.classList.add("is-editing-qunatity");
 
-      // ✅ فقط save button های همون container رو بگیر!
       const saveButton = container.querySelector(".js-save-quantity");
       saveButton.addEventListener("click", () => {
         container.classList.remove("is-editing-qunatity");
@@ -144,7 +143,7 @@ function checkOutPage() {
         const newQuantity = Number(inputElement.value);
 
         updateQuantity(productId, newQuantity);
-        checkOutPage();  
+        checkOutPage();
         inputElement.value = "";
       });
     });

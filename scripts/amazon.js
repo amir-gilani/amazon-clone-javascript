@@ -4,6 +4,7 @@ import {
   addToCart,
   addToCartAnimation,
   selectorQunatityDropdown,
+  calculateCartQuantity,
 } from "../data/cart.js";
 import { products } from "../data/products.js";
 import { formatCurrency } from "./utils/money.js";
@@ -70,17 +71,12 @@ products.forEach((product) => {
 //Render all products to the grid container
 document.querySelector(".js-products-grid").innerHTML = productsHTML;
 
+//Update cart counter in header
 function updateCartQuantity() {
-  //Accumulator for total cart items
-  let cartQuantity = 0;
-
-  cart.forEach((cartItem) => {
-    cartQuantity += cartItem.quantity;
-  });
-
-  //Update cart counter in header
-  document.querySelector(".js-cart-quantity").innerHTML = cartQuantity;
+  document.querySelector(".js-cart-quantity").innerHTML =
+    calculateCartQuantity();
 }
+updateCartQuantity();
 
 //Attach click event to ALL "Add to Cart" buttons
 document.querySelectorAll(".js-add-to-cart").forEach((button) => {

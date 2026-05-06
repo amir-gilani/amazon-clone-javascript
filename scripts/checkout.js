@@ -1,3 +1,7 @@
+// ═══════════════════════════════════════════════════════════════════════════════════════
+// EXTERNAL LIBRARIES & IMPORTS
+// ═══════════════════════════════════════════════════════════════════════════════════════
+
 import {
   cart,
   removeFromCart,
@@ -7,22 +11,22 @@ import {
 } from "../data/cart.js";
 import { products } from "../data/products.js";
 import formatCurrency from "./utils/money.js";
-import { hello } from "https:/unpkg.com/supersimpledev@1.0.1/hello.esm.js"; //ESM external library
-import dayjs from "http://unpkg.com/dayjs@1.11.10/esm/index.js";
+import dayjs from "http://unpkg.com/dayjs@1.11.10/esm/index.js"; //ESM external library && defult import
 import { deliveryOptions } from "../data/deliveryOptions.js";
-hello(); //external library
 
-const today = dayjs();
-const delivaryDay = today.add(7, "days");
-console.log(delivaryDay.format("dddd, MMMM D YYYY"));
+// ═══════════════════════════════════════════════════════════════════════════════════════
+// MAIN ORDER SUMMARY RENDERING FUNCTION
+// ═══════════════════════════════════════════════════════════════════════════════════════
+
 function renderOrderSummarry() {
   let cartSummaryHTML = "";
 
+  // LOOP THROUGH CART ITEMS & GENERATE HTML
   cart.forEach((cartItem) => {
     const { deliveryOptionId, quantity, productId } = cartItem;
 
+    // FIND MATCHING PRODUCT
     let matchingProduct;
-
     products.forEach((product) => {
       if (productId === product.id) {
         matchingProduct = product;
@@ -30,8 +34,8 @@ function renderOrderSummarry() {
     });
     const { image, name, priceCents } = matchingProduct;
 
+    // FIND MATCHING DELIVERY OPTION
     let deliveryOption;
-
     deliveryOptions.forEach((option) => {
       if (deliveryOptionId === option.id) {
         deliveryOption = option;
@@ -39,6 +43,7 @@ function renderOrderSummarry() {
     });
     const { deliveryDays } = deliveryOption;
 
+    // CALCULATE DELIVERY DATE
     const today = dayjs();
     const delivaryDate = today.add(deliveryDays, "days");
     const dateString = delivaryDate.format("dddd, MMMM D");
@@ -89,7 +94,12 @@ function renderOrderSummarry() {
   `;
   });
 
+  // UPDATE DOM WITH GENERATED HTML
   document.querySelector(".js-order-summary").innerHTML = cartSummaryHTML;
+
+  // ═══════════════════════════════════════════════════════════════════════════════════════
+  // DELIVERY OPTIONS HTML GENERATOR (NESTED FUNCTION)
+  // ═══════════════════════════════════════════════════════════════════════════════════════
 
   function deliveryOptionsHTML(productId, deliveryOptionId) {
     let html = "";
@@ -97,6 +107,7 @@ function renderOrderSummarry() {
     deliveryOptions.forEach((deliveryOption) => {
       const { id, deliveryDays, priceCents } = deliveryOption;
 
+      // CALCULATE DELIVERY DATE FOR EACH OPTION
       const today = dayjs();
       const delivaryDate = today.add(deliveryDays, "days");
       const dateString = delivaryDate.format("dddd, MMMM D");
@@ -126,12 +137,21 @@ function renderOrderSummarry() {
 
     return html;
   }
+
+  // ═══════════════════════════════════════════════════════════════════════════════════════
+  // UPDATE CART QUANTITY DISPLAY
+  // ═══════════════════════════════════════════════════════════════════════════════════════
   function updateCartQuantity() {
     document.querySelector(".js-return-to-home").innerHTML =
       `${calculateCartQuantity()} items`;
   }
   updateCartQuantity();
 
+  // ═══════════════════════════════════════════════════════════════════════════════════════
+  // EVENT LISTENERS
+  // ═══════════════════════════════════════════════════════════════════════════════════════
+
+  // DELETE ITEM EVENT HANDLER
   document.querySelectorAll(".js-delete-link").forEach((link) => {
     link.addEventListener("click", () => {
       const { productId } = link.dataset;
@@ -145,6 +165,7 @@ function renderOrderSummarry() {
     });
   });
 
+  // UPDATE QUANTITY EVENT HANDLER
   document.querySelectorAll(".js-update-link").forEach((link) => {
     link.addEventListener("click", () => {
       const { productId } = link.dataset;
@@ -168,6 +189,7 @@ function renderOrderSummarry() {
     });
   });
 
+  // DELIVERY OPTION CHANGE EVENT HANDLER
   document.querySelectorAll(".js-delivery-option").forEach((element) => {
     element.addEventListener("click", () => {
       const { deliveryOptionId, productId } = element.dataset;
@@ -177,4 +199,6 @@ function renderOrderSummarry() {
     });
   });
 }
+
+// INITIAL RENDER
 renderOrderSummarry();

@@ -1,4 +1,9 @@
-//Modules
+// ═══════════════════════════════════════════════════════════════════════════════════════
+// PRODUCT GRID RENDERING MODULE
+// Renders all products with quantity selectors, ratings, and add-to-cart functionality
+// ═══════════════════════════════════════════════════════════════════════════════════════
+
+// MODULE IMPORTS
 import {
   cart,
   addToCart,
@@ -9,37 +14,38 @@ import {
 import { products } from "../data/products.js";
 import formatCurrency from "./utils/money.js";
 
-//accumulator pattern for save all the html data inside
+// ═══════════════════════════════════════════════════════════════════════════════════════
+// PRODUCTS HTML GENERATION (ACCUMULATOR PATTERN)
+// Builds HTML string for all products using template literals
+// ═══════════════════════════════════════════════════════════════════════════════════════
 let productsHTML = "";
 
 products.forEach((product) => {
-  const { image, name, rating, priceCents } = product;
+  const { image, name, rating, priceCents, id } = product;
 
   productsHTML += `
     <div class="product-container">
+      <!-- PRODUCT IMAGE -->
       <div class="product-image-container">
-        <img class="product-image"
-          src="${image}">
+        <img class="product-image" src="${image}">
       </div>
 
-      <div class="product-name limit-text-to-2-lines">
-        ${name}
-      </div>
+      <!-- PRODUCT NAME (LIMITED TO 2 LINES) -->
+      <div class="product-name limit-text-to-2-lines">${name}</div>
 
+      <!-- PRODUCT RATING & REVIEW COUNT -->
       <div class="product-rating-container">
         <img class="product-rating-stars"
-          src="images/ratings/rating-${rating.stars * 10}.png">
-        <div class="product-rating-count link-primary">
-          ${rating.count}
-        </div>
+             src="images/ratings/rating-${rating.stars * 10}.png">
+        <div class="product-rating-count link-primary">${rating.count}</div>
       </div>
 
-      <div class="product-price">
-        $${formatCurrency(priceCents)}
-      </div>
+      <!-- PRODUCT PRICE -->
+      <div class="product-price">$${formatCurrency(priceCents)}</div>
 
+      <!-- QUANTITY SELECTOR DROPDOWN -->
       <div class="product-quantity-container">
-        <select class= "js-quantity-selector-${product.id}">
+        <select class="js-quantity-selector-${id}">
           <option selected value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
@@ -53,38 +59,51 @@ products.forEach((product) => {
         </select>
       </div>
 
+      <!-- SPACER FOR LAYOUT -->
       <div class="product-spacer"></div>
 
-      <div class="added-to-cart js-added-to-cart-${product.id}">
-        <img src="images/icons/checkmark.png">
-        Added
+      <!-- "ADDED TO CART" ANIMATION ELEMENT -->
+      <div class="added-to-cart js-added-to-cart-${id}">
+        <img src="images/icons/checkmark.png">Added
       </div>
 
+      <!-- ADD TO CART BUTTON -->
       <button class="add-to-cart-button button-primary js-add-to-cart"
-      data-product-id="${product.id}">
+              data-product-id="${id}">
         Add to Cart
       </button>
     </div>
   `;
 });
 
-//Render all products to the grid container
+// ═══════════════════════════════════════════════════════════════════════════════════════
+// RENDER PRODUCTS TO DOM & INITIALIZE
+// ═══════════════════════════════════════════════════════════════════════════════════════
+
+// RENDER ALL PRODUCTS TO GRID CONTAINER
 document.querySelector(".js-products-grid").innerHTML = productsHTML;
 
-//Update cart counter in header
+// UPDATE CART QUANTITY DISPLAY IN HEADER
 function updateCartQuantity() {
   document.querySelector(".js-cart-quantity").innerHTML =
     calculateCartQuantity();
 }
 updateCartQuantity();
 
-//Attach click event to ALL "Add to Cart" buttons
+// ═══════════════════════════════════════════════════════════════════════════════════════
+// ADD TO CART EVENT HANDLERS
+// Attaches click listeners to all "Add to Cart" buttons
+// Handles quantity selection, cart updates, and animations
+// ═══════════════════════════════════════════════════════════════════════════════════════
 document.querySelectorAll(".js-add-to-cart").forEach((button) => {
   button.addEventListener("click", () => {
-    //Extract product ID from button data attribute
+    // EXTRACT PRODUCT ID FROM DATA ATTRIBUTE
     const { productId } = button.dataset;
-    //This code for creat "qantity" for addToCart && dropdown quantity
+
+    // GET SELECTED QUANTITY FROM DROPDOWN
     const quantity = selectorQunatityDropdown(productId);
+
+    // CLEAR OTHER "ADDED" ANIMATIONS (KEEP CURRENT ONE)
     setTimeout(() => {
       document.querySelectorAll(".js-added-to-cart").forEach((el) => {
         if (!el.classList.contains(`js-added-to-cart-${productId}`)) {
@@ -93,6 +112,7 @@ document.querySelectorAll(".js-add-to-cart").forEach((button) => {
       });
     }, 100);
 
+    // EXECUTE CART OPERATIONS
     addToCart(productId, quantity);
     updateCartQuantity();
     addToCartAnimation(productId);

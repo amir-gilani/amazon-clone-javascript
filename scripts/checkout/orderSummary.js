@@ -13,6 +13,7 @@ import { getProduct } from "../../data/products.js";
 import formatCurrency from "../utils/money.js";
 import dayjs from "http://unpkg.com/dayjs@1.11.10/esm/index.js"; //ESM external library && defult import
 import { deliveryOptions, getDeliveryOption } from "../../data/deliveryOptions.js";
+import { renderPaymentSummary } from "./paymentSummary.js";
 
 
 // ═══════════════════════════════════════════════════════════════════════════════════════
@@ -151,6 +152,7 @@ export function renderOrderSummarry() {
       );
       container.remove();
       updateCartQuantity();
+      renderPaymentSummary();
     });
   });
 
@@ -173,6 +175,7 @@ export function renderOrderSummarry() {
 
         updateQuantity(productId, newQuantity);
         renderOrderSummarry();
+        renderPaymentSummary();
         inputElement.value = "";
       });
     });
@@ -184,7 +187,8 @@ export function renderOrderSummarry() {
       const { deliveryOptionId, productId } = element.dataset;
 
       updateDeliveryOption(productId, deliveryOptionId);
-      renderOrderSummarry(); //MVC 
+      renderOrderSummarry(); //MVC
+      renderPaymentSummary();
     });
   });
 }

@@ -5,6 +5,19 @@
 // Used by product-grid.js for rendering and cart.js for order processing
 // ═══════════════════════════════════════════════════════════════════════════════════════
 
+export function getProduct(productId) {
+  // FIND MATCHING PRODUCT
+  let matchingProduct;
+  products.forEach((product) => {
+    if (productId === product.id) {
+      matchingProduct = product;
+    }
+  });
+
+  return matchingProduct;
+}
+
+
 export const products = [
   // ═══════════════════════════════════════════════════════════════════════════════════════
   // APPAREL & FOOTWEAR (12 products)

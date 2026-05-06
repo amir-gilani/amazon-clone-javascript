@@ -14,7 +14,7 @@
  * formatCurrency(2095)  // "20.95"
  */
 export function formatCurrency(priceCents) {
-  return (priceCents / 100).toFixed(2);
+  return (Math.round(priceCents) / 100).toFixed(2);
 }
 
 // Default export for named import convenience

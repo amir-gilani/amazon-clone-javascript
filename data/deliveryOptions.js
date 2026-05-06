@@ -3,6 +3,16 @@
 // Defines available delivery options with ID, delivery days, and pricing
 // Used in cart summary for shipping date calculations and cost display
 // ═══════════════════════════════════════════════════════════════════════════════════════
+
+export function getDeliveryOption(deliveryOptionId) {
+  let deliveryOption;
+  deliveryOptions.forEach((option) => {
+    if (deliveryOptionId === option.id) {
+      deliveryOption = option;
+    }
+  });
+  return deliveryOption;
+}
 export const deliveryOptions = [
   {
     // STANDARD SHIPPING (FREE)

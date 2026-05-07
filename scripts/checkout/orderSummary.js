@@ -5,17 +5,18 @@
 import {
   cart,
   removeFromCart,
-  calculateCartQuantity,
   updateQuantity,
   updateDeliveryOption,
 } from "../../data/cart.js";
 import { getProduct } from "../../data/products.js";
 import formatCurrency from "../utils/money.js";
-import dayjs from "http://unpkg.com/dayjs@1.11.10/esm/index.js"; //ESM external library && defult import
-import { deliveryOptions, getDeliveryOption } from "../../data/deliveryOptions.js";
+import {
+  deliveryOptions,
+  getDeliveryOption,
+  calculateDeliveryDate,
+} from "../../data/deliveryOptions.js";
 import { renderPaymentSummary } from "./paymentSummary.js";
-
-
+import { renderCheckoutHeader } from "./checkoutHeader.js";
 // ═══════════════════════════════════════════════════════════════════════════════════════
 // MAIN ORDER SUMMARY RENDERING FUNCTION
 // ═══════════════════════════════════════════════════════════════════════════════════════
@@ -33,15 +34,10 @@ export function renderOrderSummarry() {
     // FIND MATCHING DELIVERY OPTION
     const { deliveryDays } = getDeliveryOption(deliveryOptionId); //return deliveryOption
 
-    // CALCULATE DELIVERY DATE
-    const today = dayjs();
-    const delivaryDate = today.add(deliveryDays, "days");
-    const dateString = delivaryDate.format("dddd, MMMM D");
-
     cartSummaryHTML += `
     <div class="cart-item-container js-cart-item-container-${productId}">
       <div class="delivery-date">
-        Delivery date: ${dateString}
+        Delivery date: ${calculateDeliveryDate(deliveryDays)} 
       </div>
 
       <div class="cart-item-details-grid">
@@ -97,11 +93,6 @@ export function renderOrderSummarry() {
     deliveryOptions.forEach((deliveryOption) => {
       const { id, deliveryDays, priceCents } = deliveryOption;
 
-      // CALCULATE DELIVERY DATE FOR EACH OPTION
-      const today = dayjs();
-      const delivaryDate = today.add(deliveryDays, "days");
-      const dateString = delivaryDate.format("dddd, MMMM D");
-
       const priceString =
         priceCents === 0 ? "FREE" : `$${formatCurrency(priceCents)} -`;
       const isChecked = id === deliveryOptionId ? "checked" : "";
@@ -115,7 +106,7 @@ export function renderOrderSummarry() {
             name="delivery-option-${productId}">
           <div>
             <div class="delivery-option-date">
-              ${dateString}
+              ${calculateDeliveryDate(deliveryDays)}
             </div>
             <div class="delivery-option-price">
               ${priceString} Shipping
@@ -131,11 +122,8 @@ export function renderOrderSummarry() {
   // ═══════════════════════════════════════════════════════════════════════════════════════
   // UPDATE CART QUANTITY DISPLAY
   // ═══════════════════════════════════════════════════════════════════════════════════════
-  function updateCartQuantity() {
-    document.querySelector(".js-return-to-home").innerHTML =
-      `${calculateCartQuantity()} items`;
-  }
-  updateCartQuantity();
+
+  renderCheckoutHeader();
 
   // ═══════════════════════════════════════════════════════════════════════════════════════
   // EVENT LISTENERS
@@ -151,7 +139,7 @@ export function renderOrderSummarry() {
         `.js-cart-item-container-${productId}`,
       );
       container.remove();
-      updateCartQuantity();
+      renderCheckoutHeader();
       renderPaymentSummary();
     });
   });
@@ -167,13 +155,19 @@ export function renderOrderSummarry() {
       container.classList.add("is-editing-qunatity");
 
       const saveButton = container.querySelector(".js-save-quantity");
+      const inputElement = container.querySelector(".js-quantity-input");
+
+      // ✅ ENTER LISTENER FIRST - before save!
+      inputElement.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") saveButton.click();
+      });
+
       saveButton.addEventListener("click", () => {
         container.classList.remove("is-editing-qunatity");
-
-        const inputElement = container.querySelector(".js-quantity-input");
         const newQuantity = Number(inputElement.value);
-
-        updateQuantity(productId, newQuantity);
+        if (newQuantity > 0 && newQuantity <= 100) {
+          updateQuantity(productId, newQuantity);
+        }
         renderOrderSummarry();
         renderPaymentSummary();
         inputElement.value = "";
@@ -192,4 +186,3 @@ export function renderOrderSummarry() {
     });
   });
 }
-

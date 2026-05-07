@@ -1,8 +1,29 @@
+import dayjs from "http://unpkg.com/dayjs@1.11.10/esm/index.js"; //ESM external library && defult import
 // ═══════════════════════════════════════════════════════════════════════════════════════
 // DELIVERY OPTIONS CONFIGURATION
 // Defines available delivery options with ID, delivery days, and pricing
 // Used in cart summary for shipping date calculations and cost display
 // ═══════════════════════════════════════════════════════════════════════════════════════
+export function isWeekend(date) {
+  const dayName = date.format("dddd");
+  return dayName === "Saturday" || dayName === "Sunday";
+}
+
+export function calculateDeliveryDate(deliveryDays) {
+  // Fixed typo!
+  const today = dayjs();
+  let deliveryDate = today.clone();
+  let remainingDays = deliveryDays;
+
+  while (remainingDays > 0) {
+    deliveryDate = deliveryDate.add(1, "day");
+    if (!isWeekend(deliveryDate)) {
+      remainingDays--;
+    }
+  }
+
+  return deliveryDate.format("dddd, MMMM D");
+}
 
 export function getDeliveryOption(deliveryOptionId) {
   let deliveryOption;

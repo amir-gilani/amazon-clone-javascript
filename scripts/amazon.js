@@ -5,7 +5,6 @@
 
 // MODULE IMPORTS
 import {
-  cart,
   addToCart,
   addToCartAnimation,
   selectorQunatityDropdown,

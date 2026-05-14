@@ -4,6 +4,7 @@
 // Contains 32 products across categories: apparel, kitchen, home, accessories, footwear
 // Used by product-grid.js for rendering and cart.js for order processing
 // ═══════════════════════════════════════════════════════════════════════════════════════
+import formatCurrency from "../scripts/utils/money.js";
 
 export function getProduct(productId) {
   // FIND MATCHING PRODUCT
@@ -17,6 +18,29 @@ export function getProduct(productId) {
   return matchingProduct;
 }
 
+class Product {
+  id;
+  image;
+  name;
+  rating;
+  priceCents;
+
+  constructor(productDetails) {
+    this.id = productDetails.id;
+    this.image = productDetails.image;
+    this.name = productDetails.name;
+    this.rating = productDetails.rating;
+    this.priceCents = productDetails.priceCents;
+  }
+
+  getStarsUrl() {
+    return `images/ratings/rating-${this.rating.stars * 10}.png`
+  }
+
+  getPrice() {
+    return `$${formatCurrency(this.priceCents)}`
+  }
+}
 
 export const products = [
   // ═══════════════════════════════════════════════════════════════════════════════════════
@@ -374,6 +398,7 @@ export const products = [
     priceCents: 1229, // $12.29
     keywords: ["umbrella"],
   },
-];
-
+].map((productDetails) => {
+  return new Product(productDetails);
+});
 // TOTAL: 32 PRODUCTS | 12 Apparel/Footwear | 13 Kitchen | 7 Home/Bathroom | 5 Accessories | 2 Sports | 2 Misc | 2 Added

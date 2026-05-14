@@ -35,12 +35,12 @@ products.forEach((product) => {
       <!-- PRODUCT RATING & REVIEW COUNT -->
       <div class="product-rating-container">
         <img class="product-rating-stars"
-             src="images/ratings/rating-${rating.stars * 10}.png">
+             src="${product.getStarsUrl()}">
         <div class="product-rating-count link-primary">${rating.count}</div>
       </div>
 
       <!-- PRODUCT PRICE -->
-      <div class="product-price">$${formatCurrency(priceCents)}</div>
+      <div class="product-price">${product.getPrice()}</div>
 
       <!-- QUANTITY SELECTOR DROPDOWN -->
       <div class="product-quantity-container">

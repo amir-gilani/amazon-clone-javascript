@@ -10,8 +10,7 @@ import {
   selectorQunatityDropdown,
   calculateCartQuantity,
 } from "../data/cart.js";
-import { products } from "../data/products.js";
-import formatCurrency from "./utils/money.js";
+import { products, Clothing } from "../data/products.js";
 
 // ═══════════════════════════════════════════════════════════════════════════════════════
 // PRODUCTS HTML GENERATION (ACCUMULATOR PATTERN)
@@ -20,7 +19,7 @@ import formatCurrency from "./utils/money.js";
 let productsHTML = "";
 
 products.forEach((product) => {
-  const { image, name, rating, priceCents, id } = product;
+  const { image, name, rating, id } = product;
 
   productsHTML += `
     <div class="product-container">
@@ -35,7 +34,7 @@ products.forEach((product) => {
       <!-- PRODUCT RATING & REVIEW COUNT -->
       <div class="product-rating-container">
         <img class="product-rating-stars"
-             src="${product.getStarsUrl()}">
+          src="${product.getStarsUrl()}">
         <div class="product-rating-count link-primary">${rating.count}</div>
       </div>
 
@@ -58,6 +57,9 @@ products.forEach((product) => {
         </select>
       </div>
 
+      ${product.extraInfoHTML()}
+      <!-- ${product instanceof Clothing ? `<a href="${product.sizeChartLink}" target="_blank" >Size chart</a>` : ''} --> <!-- size information -->
+
       <!-- SPACER FOR LAYOUT -->
       <div class="product-spacer"></div>
 
@@ -68,7 +70,7 @@ products.forEach((product) => {
 
       <!-- ADD TO CART BUTTON -->
       <button class="add-to-cart-button button-primary js-add-to-cart"
-              data-product-id="${id}">
+        data-product-id="${id}">
         Add to Cart
       </button>
     </div>

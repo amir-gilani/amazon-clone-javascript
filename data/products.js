@@ -34,11 +34,31 @@ class Product {
   }
 
   getStarsUrl() {
-    return `images/ratings/rating-${this.rating.stars * 10}.png`
+    return `images/ratings/rating-${this.rating.stars * 10}.png`;
   }
 
   getPrice() {
-    return `$${formatCurrency(this.priceCents)}`
+    return `$${formatCurrency(this.priceCents)}`;
+  }
+
+  extraInfoHTML() {
+    return '';
+  }
+}
+
+export class Clothing extends Product {
+  sizeChartLink;
+
+  constructor(productDetails) {
+    super(productDetails);
+    this.sizeChartLink = productDetails.sizeChartLink;
+  }
+
+  extraInfoHTML() {
+    super.extraInfoHTML();
+    return `
+    <a href="${this.sizeChartLink}" target="_blank" >Size chart</a>
+    `
   }
 }
 
@@ -399,6 +419,10 @@ export const products = [
     keywords: ["umbrella"],
   },
 ].map((productDetails) => {
-  return new Product(productDetails);
+  if (productDetails.type === "clothing") {
+    return new Clothing(productDetails);
+  } else {
+    return new Product(productDetails);
+  }
 });
 // TOTAL: 32 PRODUCTS | 12 Apparel/Footwear | 13 Kitchen | 7 Home/Bathroom | 5 Accessories | 2 Sports | 2 Misc | 2 Added

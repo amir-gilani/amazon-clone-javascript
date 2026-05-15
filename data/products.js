@@ -42,7 +42,7 @@ class Product {
   }
 
   extraInfoHTML() {
-    return '';
+    return "";
   }
 }
 
@@ -58,7 +58,7 @@ export class Clothing extends Product {
     super.extraInfoHTML();
     return `
     <a href="${this.sizeChartLink}" target="_blank" >Size chart</a>
-    `
+    `;
   }
 }
 
@@ -426,3 +426,33 @@ export const products = [
   }
 });
 // TOTAL: 32 PRODUCTS | 12 Apparel/Footwear | 13 Kitchen | 7 Home/Bathroom | 5 Accessories | 2 Sports | 2 Misc | 2 Added
+
+/*
+const date = new Date();
+console.log(date);
+console.log(date.toLocaleTimeString())
+*/
+
+/*
+const object2 = {
+  a: 1,
+  b: this.a,
+}
+console.log(object2.b)
+console.log(this)
+*/
+
+/*
+function logThis() {
+  console.log(this);
+}
+logThis();
+logThis.call(2 + 2);
+
+const object3 = {
+  method: () => {
+    console.log(this);
+  }
+}
+object3.method();
+*/

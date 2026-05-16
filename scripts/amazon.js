@@ -56,7 +56,8 @@ products.forEach((product) => {
           <option value="10">10</option>
         </select>
       </div>
-
+      ${product.getInstructionsLink()}
+      ${product.getWarrantyLink()}
       ${product.extraInfoHTML()}
       <!-- ${product instanceof Clothing ? `<a href="${product.sizeChartLink}" target="_blank" >Size chart</a>` : ''} --> <!-- size information -->
 

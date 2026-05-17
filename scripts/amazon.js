@@ -10,18 +10,22 @@ import {
   selectorQunatityDropdown,
   calculateCartQuantity,
 } from "../data/cart.js";
-import { products, Clothing } from "../data/products.js";
+import { products, Clothing, loadProducts } from "../data/products.js";
 
 // ═══════════════════════════════════════════════════════════════════════════════════════
 // PRODUCTS HTML GENERATION (ACCUMULATOR PATTERN)
 // Builds HTML string for all products using template literals
 // ═══════════════════════════════════════════════════════════════════════════════════════
-let productsHTML = "";
 
-products.forEach((product) => {
-  const { image, name, rating, id } = product;
+loadProducts(renderProductsGrid);
 
-  productsHTML += `
+function renderProductsGrid() {
+  let productsHTML = "";
+
+  products.forEach((product) => {
+    const { image, name, rating, id } = product;
+
+    productsHTML += `
     <div class="product-container">
       <!-- PRODUCT IMAGE -->
       <div class="product-image-container">
@@ -59,7 +63,7 @@ products.forEach((product) => {
       ${product.getInstructionsLink()}
       ${product.getWarrantyLink()}
       ${product.extraInfoHTML()}
-      <!-- ${product instanceof Clothing ? `<a href="${product.sizeChartLink}" target="_blank" >Size chart</a>` : ''} --> <!-- size information -->
+      <!-- ${product instanceof Clothing ? `<a href="${product.sizeChartLink}" target="_blank" >Size chart</a>` : ""} --> <!-- size information -->
 
       <!-- SPACER FOR LAYOUT -->
       <div class="product-spacer"></div>
@@ -76,47 +80,48 @@ products.forEach((product) => {
       </button>
     </div>
   `;
-});
-
-// ═══════════════════════════════════════════════════════════════════════════════════════
-// RENDER PRODUCTS TO DOM & INITIALIZE
-// ═══════════════════════════════════════════════════════════════════════════════════════
-
-// RENDER ALL PRODUCTS TO GRID CONTAINER
-document.querySelector(".js-products-grid").innerHTML = productsHTML;
-
-// UPDATE CART QUANTITY DISPLAY IN HEADER
-function updateCartQuantity() {
-  document.querySelector(".js-cart-quantity").innerHTML =
-    calculateCartQuantity();
-}
-updateCartQuantity();
-
-// ═══════════════════════════════════════════════════════════════════════════════════════
-// ADD TO CART EVENT HANDLERS
-// Attaches click listeners to all "Add to Cart" buttons
-// Handles quantity selection, cart updates, and animations
-// ═══════════════════════════════════════════════════════════════════════════════════════
-document.querySelectorAll(".js-add-to-cart").forEach((button) => {
-  button.addEventListener("click", () => {
-    // EXTRACT PRODUCT ID FROM DATA ATTRIBUTE
-    const { productId } = button.dataset;
-
-    // GET SELECTED QUANTITY FROM DROPDOWN
-    const quantity = selectorQunatityDropdown(productId);
-
-    // CLEAR OTHER "ADDED" ANIMATIONS (KEEP CURRENT ONE)
-    setTimeout(() => {
-      document.querySelectorAll(".js-added-to-cart").forEach((el) => {
-        if (!el.classList.contains(`js-added-to-cart-${productId}`)) {
-          el.classList.remove("js-added-to-cart");
-        }
-      });
-    }, 100);
-
-    // EXECUTE CART OPERATIONS
-    addToCart(productId, quantity);
-    updateCartQuantity();
-    addToCartAnimation(productId);
   });
-});
+
+  // ═══════════════════════════════════════════════════════════════════════════════════════
+  // RENDER PRODUCTS TO DOM & INITIALIZE
+  // ═══════════════════════════════════════════════════════════════════════════════════════
+
+  // RENDER ALL PRODUCTS TO GRID CONTAINER
+  document.querySelector(".js-products-grid").innerHTML = productsHTML;
+
+  // UPDATE CART QUANTITY DISPLAY IN HEADER
+  function updateCartQuantity() {
+    document.querySelector(".js-cart-quantity").innerHTML =
+      calculateCartQuantity();
+  }
+  updateCartQuantity();
+
+  // ═══════════════════════════════════════════════════════════════════════════════════════
+  // ADD TO CART EVENT HANDLERS
+  // Attaches click listeners to all "Add to Cart" buttons
+  // Handles quantity selection, cart updates, and animations
+  // ═══════════════════════════════════════════════════════════════════════════════════════
+  document.querySelectorAll(".js-add-to-cart").forEach((button) => {
+    button.addEventListener("click", () => {
+      // EXTRACT PRODUCT ID FROM DATA ATTRIBUTE
+      const { productId } = button.dataset;
+
+      // GET SELECTED QUANTITY FROM DROPDOWN
+      const quantity = selectorQunatityDropdown(productId);
+
+      // CLEAR OTHER "ADDED" ANIMATIONS (KEEP CURRENT ONE)
+      setTimeout(() => {
+        document.querySelectorAll(".js-added-to-cart").forEach((el) => {
+          if (!el.classList.contains(`js-added-to-cart-${productId}`)) {
+            el.classList.remove("js-added-to-cart");
+          }
+        });
+      }, 100);
+
+      // EXECUTE CART OPERATIONS
+      addToCart(productId, quantity);
+      updateCartQuantity();
+      addToCartAnimation(productId);
+    });
+  });
+}

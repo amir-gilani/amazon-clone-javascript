@@ -86,6 +86,31 @@ class Appliance extends Product {
   }
 }
 
+export let products = [];
+
+export function loadProducts(fun) {
+  const xhr = new XMLHttpRequest();
+
+  xhr.addEventListener("load", () => {
+    products = JSON.parse(xhr.response).map((productDetails) => {
+      if (productDetails.type === "clothing") {
+        return new Clothing(productDetails);
+      } else if (productDetails.type === "Appliance") {
+        return new Appliance(productDetails);
+      } else {
+        return new Product(productDetails);
+      }
+    });
+
+    console.log('Load from page');
+
+    fun();
+  });
+
+  xhr.open("GET", "https://supersimplebackend.dev/products");
+  xhr.send();
+}
+/*
 export const products = [
   // ═══════════════════════════════════════════════════════════════════════════════════════
   // APPAREL & FOOTWEAR (12 products)
@@ -463,6 +488,7 @@ export const products = [
     return new Product(productDetails);
   }
 });
+*/
 // TOTAL: 32 PRODUCTS | 12 Apparel/Footwear | 13 Kitchen | 7 Home/Bathroom | 5 Accessories | 2 Sports | 2 Misc | 2 Added
 
 /*

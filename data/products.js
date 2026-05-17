@@ -494,4 +494,3 @@ const object3 = {
 }
 object3.method();
 */
-console.log(`../images/appliance-instructions.png`)

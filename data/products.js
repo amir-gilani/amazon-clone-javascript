@@ -102,7 +102,7 @@ export function loadProducts(fun) {
       }
     });
 
-    console.log('Load from page');
+    console.log('Load products');
 
     fun();
   });

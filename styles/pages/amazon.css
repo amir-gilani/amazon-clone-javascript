@@ -1,129 +1,311 @@
+/* ═══════════════════════════════════════════════════════════════════════════════════════
+   AMAZON 2026 HOME PAGE (HERO DEAL CAROUSEL + PROMO CARDS + PRODUCTS GRID)
+   ═══════════════════════════════════════════════════════════════════════════════════════ */
+
+body {
+  background-color: #e3e6e6;
+}
+
 .main {
-  margin-top: 60px;
+  margin-top: 105px;
+  max-width: 1540px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 10px 18px 40px;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   1. HERO DEALS HORIZONTAL CAROUSEL (EXACT MATCH TO SCREENSHOT)
+   ═══════════════════════════════════════════════════════════════ */
+.hero-deals-section {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.hero-deals-scroll {
+  display: flex;
+  gap: 14px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+  scrollbar-width: none;
+  scroll-behavior: smooth;
+}
+
+.hero-deals-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.hero-deal-card {
+  flex: 0 0 270px;
+  height: 380px;
+  border-radius: 12px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-decoration: none;
+  color: #ffffff;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.hero-deal-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.hero-deal-card.card-purple {
+  background: linear-gradient(180deg, #9333ea 0%, #7e22ce 40%, #581c87 100%);
+}
+
+.hero-deal-card.card-violet {
+  background: linear-gradient(180deg, #8b5cf6 0%, #7c3aed 40%, #4c1d95 100%);
+}
+
+.hero-deal-card.card-green {
+  background: linear-gradient(180deg, #10b981 0%, #059669 40%, #064e3b 100%);
+}
+
+.hero-deal-card.card-rose {
+  background: linear-gradient(180deg, #be185d 0%, #9d174d 40%, #831843 100%);
+}
+
+.hero-deal-card.card-sand {
+  background: linear-gradient(180deg, #78716c 0%, #57534e 40%, #44403c 100%);
+}
+
+.hero-deal-tag {
+  font-size: 13px;
+  font-weight: 500;
+  opacity: 0.95;
+  margin-bottom: 4px;
+}
+
+.hero-deal-title {
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 1.25;
+  margin-bottom: 12px;
+}
+
+.hero-deal-image-wrap {
+  width: 100%;
+  height: 200px;
+  border-radius: 8px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+
+.hero-deal-image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.hero-deal-card:hover .hero-deal-image {
+  transform: scale(1.06);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   2. CATEGORY PROMO CARDS (4-COLUMN GRID)
+   ═══════════════════════════════════════════════════════════════ */
+.promo-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+@media (max-width: 1100px) {
+  .promo-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .promo-cards-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.promo-card {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.promo-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.promo-card-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #0f1111;
+}
+
+.promo-card-image-box {
+  width: 100%;
+  height: 240px;
+  background: #f7f7f7;
+  border-radius: 6px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 14px;
+  padding: 16px;
+}
+
+.promo-card-image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  transition: transform 0.25s ease;
+}
+
+.promo-card:hover .promo-card-image {
+  transform: scale(1.05);
+}
+
+.promo-card-link {
+  color: #007185;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.promo-card-link:hover {
+  color: #c7511f;
+  text-decoration: underline;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   3. PRODUCTS GRID SECTION (AMAZON PRODUCTS)
+   ═══════════════════════════════════════════════════════════════ */
+.products-section-title {
+  font-size: 22px;
+  font-weight: 800;
+  color: #0f1111;
+  margin-bottom: 14px;
+  padding-left: 4px;
 }
 
 .products-grid {
   display: grid;
-
-  /* - In CSS Grid, 1fr means a column will take up the
-       remaining space in the grid.
-     - If we write 1fr 1fr ... 1fr; 8 times, this will
-       divide the grid into 8 columns, each taking up an
-       equal amount of the space.
-     - repeat(8, 1fr); is a shortcut for repeating "1fr"
-       8 times (instead of typing out "1fr" 8 times).
-       repeat(...) is a special property that works with
-       display: grid; */
-  grid-template-columns: repeat(8, 1fr);
+  grid-template-columns: repeat(6, 1fr);
+  gap: 14px;
 }
 
-/* @media is used to create responsive design (making the
-   website look good on any screen size). This @media
-   means when the screen width is 2000px or less, we
-   will divide the grid into 7 columns instead of 8. */
-@media (max-width: 2000px) {
-  .products-grid {
-    grid-template-columns: repeat(7, 1fr);
-  }
-}
-
-/* This @media means when the screen width is 1600px or
-   less, we will divide the grid into 6 columns. */
 @media (max-width: 1600px) {
-  .products-grid {
-    grid-template-columns: repeat(6, 1fr);
-  }
-}
-
-@media (max-width: 1300px) {
   .products-grid {
     grid-template-columns: repeat(5, 1fr);
   }
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 1300px) {
   .products-grid {
     grid-template-columns: repeat(4, 1fr);
   }
 }
 
-@media (max-width: 800px) {
+@media (max-width: 1000px) {
   .products-grid {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 
-@media (max-width: 575px) {
+@media (max-width: 768px) {
   .products-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media (max-width: 450px) {
+@media (max-width: 480px) {
   .products-grid {
     grid-template-columns: 1fr;
   }
 }
 
 .product-container {
-  padding-top: 40px;
-  padding-bottom: 25px;
-  padding-left: 25px;
-  padding-right: 25px;
-
-  border-right: 1px solid rgb(231, 231, 231);
-  border-bottom: 1px solid rgb(231, 231, 231);
-
+  padding: 20px 16px;
+  background: #ffffff;
+  border-radius: 8px;
   display: flex;
   flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+}
+
+.product-container:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
 }
 
 .product-image-container {
   display: flex;
   justify-content: center;
   align-items: center;
-
   height: 180px;
-  margin-bottom: 20px;
+  margin-bottom: 14px;
 }
 
 .product-image {
-  /* Images will overflow their container by default. To
-    prevent this, we set max-width and max-height to 100%
-    so they stay inside their container. */
   max-width: 100%;
   max-height: 100%;
+  object-fit: contain;
 }
 
 .product-name {
   height: 40px;
-  margin-bottom: 5px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.35;
+  color: #0f1111;
+  margin-bottom: 6px;
 }
 
 .product-rating-container {
   display: flex;
   align-items: center;
-  margin-bottom: 10px;
+  gap: 6px;
+  margin-bottom: 6px;
 }
 
 .product-rating-stars {
-  width: 100px;
-  margin-right: 6px;
+  width: 85px;
 }
 
 .product-rating-count {
-  color: rgb(1, 124, 182);
+  color: #007185;
+  font-size: 13px;
+  font-weight: 500;
   cursor: pointer;
-  margin-top: 3px;
 }
 
 .product-price {
+  font-size: 18px;
   font-weight: 700;
+  color: #0f1111;
   margin-bottom: 10px;
 }
 
 .product-quantity-container {
-  margin-bottom: 17px;
+  margin-bottom: 12px;
 }
 
 .product-spacer {
@@ -131,17 +313,15 @@
 }
 
 .added-to-cart {
-  color: rgb(6, 125, 98);
-  font-size: 16px;
-
+  color: #067d62;
+  font-size: 14px;
+  font-weight: 600;
   display: flex;
   align-items: center;
+  gap: 6px;
   margin-bottom: 8px;
-
-  /* At first, the "Added to cart" message will
-     be invisible. Use JavaScript to change the
-     opacity and make it visible. */
   opacity: 0;
+  transition: opacity 0.2s ease;
 }
 
 .js-added-to-cart {
@@ -149,12 +329,22 @@
 }
 
 .added-to-cart img {
-  height: 20px;
-  margin-right: 5px;
+  height: 16px;
 }
 
 .add-to-cart-button {
   width: 100%;
-  padding: 8px;
-  border-radius: 50px;
+  padding: 8px 12px;
+  font-size: 13px;
+  font-weight: 600;
+  background-color: #ffd814;
+  border: 1px solid #fcd200;
+  border-radius: 20px;
+  box-shadow: 0 2px 5px rgba(213, 217, 217, 0.5);
+  transition: background-color 0.15s ease;
+}
+
+.add-to-cart-button:hover {
+  background-color: #f7ca00;
+  border-color: #f2c200;
 }

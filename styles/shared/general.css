@@ -1,72 +1,80 @@
-body {
-  font-family: Roboto, Arial;
-  color: rgb(33, 33, 33);
-  /* The <body> element has a default margin of 8px
-     on all sides. This removes the default margins. */
-  margin: 0;
+/* ═══════════════════════════════════════════════════════════════════════════════════════
+   AMAZON 2026 GLOBAL STYLES & TYPOGRAPHY
+   ═══════════════════════════════════════════════════════════════════════════════════════ */
+
+* {
+  box-sizing: border-box;
 }
 
-/* <p> elements have a default margin on the top
-   and bottom. This removes the default margins. */
+body {
+  font-family: Arial, sans-serif;
+  color: #0f1111;
+  background-color: #e3e6e6;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
 p {
   margin: 0;
 }
 
 button {
   cursor: pointer;
+  font-family: inherit;
 }
 
 select {
   cursor: pointer;
+  font-family: inherit;
 }
 
 input, select, button {
-  font-family: Roboto, Arial;
+  font-family: inherit;
 }
 
+/* ─── PRIMARY BUTTON (AMAZON YELLOW) ─── */
 .button-primary {
-  color: rgb(33, 33, 33);
-  background-color: rgb(255, 216, 20);
-  border: 1px solid rgb(252, 210, 0);
-  border-radius: 8px;
+  color: #0f1111;
+  background: #ffd814;
+  border: 1px solid #fcd200;
+  border-radius: 20px;
+  font-weight: 500;
+  font-size: 13px;
   cursor: pointer;
   box-shadow: 0 2px 5px rgba(213, 217, 217, 0.5);
+  transition: all 0.15s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .button-primary:hover {
-  background-color: rgb(247, 202, 0);
-  border: 1px solid rgb(242, 194, 0);
+  background: #f7ca00;
+  border-color: #f2c200;
 }
 
 .button-primary:active {
-  background: rgb(255, 216, 20);
-  border-color: rgb(252, 210, 0);
+  background: #f0b800;
   box-shadow: none;
 }
 
+/* ─── SECONDARY BUTTON ─── */
 .button-secondary {
-  color: rgb(33, 33, 33);
-  background: white;
-  border: 1px solid rgb(213, 217, 217);
+  color: #0f1111;
+  background: #ffffff;
+  border: 1px solid #d5d9d9;
   border-radius: 8px;
+  font-weight: 500;
+  font-size: 13px;
   cursor: pointer;
   box-shadow: 0 2px 5px rgba(213, 217, 217, 0.5);
+  transition: all 0.15s ease;
 }
 
 .button-secondary:hover {
-  background-color: rgb(247, 250, 250);
+  background-color: #f7fafa;
 }
 
-.button-secondary:active {
-  background-color: rgb(237, 253, 255);
-  box-shadow: none;
-}
-
-/* These styles will limit text to 2 lines. Anything
-   beyond 2 lines will be replaced with "..."
-   You can find this code by using an A.I. tool or by
-   searching in Google.
-   https://css-tricks.com/almanac/properties/l/line-clamp/ */
 .limit-text-to-2-lines {
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -75,27 +83,32 @@ input, select, button {
 }
 
 .link-primary {
-  color: rgb(1, 124, 182);
+  color: #007185;
+  text-decoration: none;
+  font-weight: 500;
   cursor: pointer;
 }
 
 .link-primary:hover {
-  color: rgb(196, 80, 0);
+  color: #c7511f;
+  text-decoration: underline;
 }
 
-/* Styles for dropdown selectors. */
+/* ─── SELECT DROPDOWN ─── */
 select {
-  color: rgb(33, 33, 33);
-  background-color: rgb(240, 240, 240);
-  border: 1px solid rgb(213, 217, 217);
+  color: #0f1111;
+  background-color: #f0f2f2;
+  border: 1px solid #d5d9d9;
   border-radius: 8px;
-  padding: 3px 5px;
-  font-size: 15px;
+  padding: 4px 8px;
+  font-size: 13px;
   cursor: pointer;
   box-shadow: 0 2px 5px rgba(213, 217, 217, 0.5);
+  outline: none;
 }
 
 select:focus,
 input:focus {
-  outline: 2px solid rgb(255, 153, 0);
+  border-color: #e77600;
+  box-shadow: 0 0 3px 2px rgba(228, 121, 17, 0.5);
 }

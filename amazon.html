@@ -2,61 +2,260 @@
 <html>
 
 <head>
-  <title>Amazon Project</title>
-
-  <!-- This code is needed for responsive design to work.
-      (Responsive design = make the website look good on
-      smaller screen sizes like a phone or a tablet). -->
+  <title>Amazon.com. Spend less. Smile more.</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- Load a font called Roboto from Google Fonts. -->
-  <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
+  <!-- Load fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"> -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
 
-  <!-- Here are the CSS files for this page. -->
+  <!-- CSS files -->
   <link rel="stylesheet" href="styles/shared/general.css">
   <link rel="stylesheet" href="styles/shared/amazon-header.css">
   <link rel="stylesheet" href="styles/pages/amazon.css">
 </head>
 
 <body>
-  <div class="amazon-header">
+  <!-- ═══════════════════════════════════════════════════════════════
+       1. AUTHENTIC AMAZON SOLID HEADER (#131921)
+       ═══════════════════════════════════════════════════════════════ -->
+  <header class="amazon-header">
+    <!-- Left Section: Logo & Deliver To -->
     <div class="amazon-header-left-section">
-      <a href="amazon.html" class="header-link">
-        <img class="amazon-logo" src="images/amazon-logo-white.png">
-        <img class="amazon-mobile-logo" src="images/amazon-mobile-logo-white.png">
+      <a href="amazon.html" class="nav-link nav-logo-link">
+        <img class="amazon-logo" src="images/amazon-logo-white.png" alt="Amazon Logo">
+        <img class="amazon-mobile-logo" src="images/amazon-mobile-logo-white.png" alt="Amazon Mobile Logo">
       </a>
+
+      <div class="nav-link nav-location">
+        <svg class="nav-location-icon" viewBox="0 0 24 24">
+          <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+        </svg>
+        <div class="nav-location-text">
+          <span class="nav-line-1">Delivering to Waterbury 06708</span>
+          <span class="nav-line-2">Update location</span>
+        </div>
+      </div>
     </div>
 
+    <!-- Middle Section: Search with Compact 'All' Dropdown -->
     <div class="amazon-header-middle-section">
-      <input class="search-bar" type="text" placeholder="Search">
+      <select class="nav-search-dropdown js-search-category" aria-label="Search in">
+        <option value="all" selected>All</option>
+        <option value="deals">Deals</option>
+        <option value="electronics">Electronics</option>
+        <option value="clothing">Fashion</option>
+        <option value="home">Home</option>
+        <option value="beauty">Beauty</option>
+        <option value="books">Books</option>
+      </select>
 
-      <button class="search-button">
-        <img class="search-icon" src="images/icons/search-icon.png">
+      <input class="search-bar js-search-bar" type="text" placeholder="Search Amazon">
+
+      <button class="search-button js-search-button" aria-label="Search">
+        <img class="search-icon" src="images/icons/search-icon.png" alt="Search">
       </button>
     </div>
 
+    <!-- Right Section: Language, Account, Orders, Cart -->
     <div class="amazon-header-right-section">
-      <a class="orders-link header-link" href="orders.html">
-        <span class="returns-text">Returns</span>
-        <span class="orders-text">& Orders</span>
+      <div class="nav-link nav-language">
+        <!-- Authentic US Flag SVG -->
+        <svg class="nav-flag-svg" viewBox="0 0 24 16" width="22" height="15">
+          <rect width="24" height="16" fill="#b22234"/>
+          <path d="M0,1.23h24 M0,3.69h24 M0,6.15h24 M0,8.61h24 M0,11.07h24 M0,13.53h24" stroke="#ffffff" stroke-width="1.23"/>
+          <rect width="9.6" height="8.61" fill="#3c3b6e"/>
+          <g fill="#ffffff">
+            <circle cx="1.6" cy="1.4" r="0.45"/>
+            <circle cx="3.2" cy="1.4" r="0.45"/>
+            <circle cx="4.8" cy="1.4" r="0.45"/>
+            <circle cx="6.4" cy="1.4" r="0.45"/>
+            <circle cx="8.0" cy="1.4" r="0.45"/>
+            <circle cx="2.4" cy="2.8" r="0.45"/>
+            <circle cx="4.0" cy="2.8" r="0.45"/>
+            <circle cx="5.6" cy="2.8" r="0.45"/>
+            <circle cx="7.2" cy="2.8" r="0.45"/>
+            <circle cx="1.6" cy="4.2" r="0.45"/>
+            <circle cx="3.2" cy="4.2" r="0.45"/>
+            <circle cx="4.8" cy="4.2" r="0.45"/>
+            <circle cx="6.4" cy="4.2" r="0.45"/>
+            <circle cx="8.0" cy="4.2" r="0.45"/>
+            <circle cx="2.4" cy="5.6" r="0.45"/>
+            <circle cx="4.0" cy="5.6" r="0.45"/>
+            <circle cx="5.6" cy="5.6" r="0.45"/>
+            <circle cx="7.2" cy="5.6" r="0.45"/>
+            <circle cx="1.6" cy="7.0" r="0.45"/>
+            <circle cx="3.2" cy="7.0" r="0.45"/>
+            <circle cx="4.8" cy="7.0" r="0.45"/>
+            <circle cx="6.4" cy="7.0" r="0.45"/>
+            <circle cx="8.0" cy="7.0" r="0.45"/>
+          </g>
+        </svg>
+        <span>EN</span>
+        <span class="nav-arrow">▼</span>
+      </div>
+
+      <a class="nav-link nav-account" href="#">
+        <span class="nav-line-1">Hello, sign in</span>
+        <span class="nav-line-2">Account & Lists <span class="nav-arrow">▼</span></span>
       </a>
 
-      <a class="cart-link header-link" href="checkout.html">
-        <img class="cart-icon" src="images/icons/cart-icon.png">
-        <div class="cart-quantity js-cart-quantity"></div>
+      <a class="nav-link nav-orders" href="orders.html">
+        <span class="nav-line-1">Returns</span>
+        <span class="nav-line-2">& Orders</span>
+      </a>
+
+      <a class="nav-link cart-link" href="checkout.html">
+        <div class="cart-icon-wrapper">
+          <img class="cart-icon" src="images/icons/cart-icon.png" alt="Cart">
+          <div class="cart-quantity js-cart-quantity"></div>
+        </div>
         <div class="cart-text">Cart</div>
       </a>
     </div>
-  </div>
+  </header>
 
-  <div class="main">
+  <!-- ═══════════════════════════════════════════════════════════════
+       2. SUB-NAV BAR (#232f3e - IDENTICAL TO AMAZON SCREENSHOT)
+       ═══════════════════════════════════════════════════════════════ -->
+  <nav class="amazon-subnav">
+    <a href="#" class="subnav-link subnav-link-all">
+      <div class="subnav-hamburger-icon">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      All
+    </a>
+    <a href="#" class="subnav-link">Prime <span class="nav-arrow">▼</span></a>
+    <a href="#" class="subnav-link">Groceries <span class="nav-arrow">▼</span></a>
+    <a href="#" class="subnav-link">Today's Deals</a>
+    <a href="#" class="subnav-link">Coupons</a>
+    <a href="#" class="subnav-link">Pharmacy</a>
+    <a href="#" class="subnav-link">Whole Foods</a>
+    <a href="#" class="subnav-link">Audible</a>
+    <a href="#" class="subnav-link">Music</a>
+    <a href="#" class="subnav-link">Amazon Home <span class="nav-arrow">▼</span></a>
+    <a href="#" class="subnav-link">Beauty & Personal Care</a>
+    <a href="#" class="subnav-link">Registry</a>
+    <a href="#" class="subnav-link">Pet Supplies</a>
+    <a href="#" class="subnav-link">Automotive</a>
+    <a href="#" class="subnav-link">New Releases</a>
+    <a href="#" class="subnav-link">Fashion</a>
+  </nav>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       3. MAIN BODY: HERO DEAL CAROUSEL & CARDS & PRODUCT GRID
+       ═══════════════════════════════════════════════════════════════ -->
+  <main class="main">
+    <!-- HERO HORIZONTAL CAROUSEL CARDS -->
+    <section class="hero-deals-section">
+      <div class="hero-deals-scroll">
+        <a href="#" class="hero-deal-card card-purple">
+          <div>
+            <div class="hero-deal-tag">Low prices every day</div>
+            <div class="hero-deal-title">Halloween party finds under $20</div>
+          </div>
+          <div class="hero-deal-image-wrap">
+            <img class="hero-deal-image" src="images/products/athletic-cotton-socks-6-pairs.jpg" alt="Party Finds">
+          </div>
+        </a>
+
+        <a href="#" class="hero-deal-card card-violet">
+          <div>
+            <div class="hero-deal-tag">Save on essentials</div>
+            <div class="hero-deal-title">Trick-or-treating under $20</div>
+          </div>
+          <div class="hero-deal-image-wrap">
+            <img class="hero-deal-image" src="images/products/backpack.jpg" alt="Treating Deals">
+          </div>
+        </a>
+
+        <a href="#" class="hero-deal-card card-green">
+          <div>
+            <div class="hero-deal-tag">Trending deals</div>
+            <div class="hero-deal-title">Costumes & Apparel under $50</div>
+          </div>
+          <div class="hero-deal-image-wrap">
+            <img class="hero-deal-image" src="images/products/adults-plain-cotton-tshirt-2-pack-teal.jpg" alt="Costumes">
+          </div>
+        </a>
+
+        <a href="#" class="hero-deal-card card-rose">
+          <div>
+            <div class="hero-deal-tag">New sizes & colors</div>
+            <div class="hero-deal-title">Hydration bottles in exclusive colors</div>
+          </div>
+          <div class="hero-deal-image-wrap">
+            <img class="hero-deal-image" src="images/products/coffeemaker-with-glass-carafe-black.jpg" alt="Bottles">
+          </div>
+        </a>
+
+        <a href="#" class="hero-deal-card card-sand">
+          <div>
+            <div class="hero-deal-tag">See this season's latest</div>
+            <div class="hero-deal-title">Update your fall wardrobe & home</div>
+          </div>
+          <div class="hero-deal-image-wrap">
+            <img class="hero-deal-image" src="images/products/blackout-curtains-black.jpg" alt="Wardrobe">
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- 4-COLUMN PROMO CARDS (JUST LIKE THE REAL AMAZON) -->
+    <section class="promo-cards-grid">
+      <div class="promo-card">
+        <div class="promo-card-header">
+          <div class="promo-card-title">Save on Kitchen & Home Devices</div>
+        </div>
+        <div class="promo-card-image-box">
+          <img class="promo-card-image" src="images/products/black-2-slot-toaster.jpg" alt="Toaster">
+        </div>
+        <a href="#" class="promo-card-link">See all kitchen deals ›</a>
+      </div>
+
+      <div class="promo-card">
+        <div class="promo-card-header">
+          <div class="promo-card-title">Top Rated Electronics & Gadgets</div>
+        </div>
+        <div class="promo-card-image-box">
+          <img class="promo-card-image" src="images/products/countertop-blender-64-oz.jpg" alt="Blender">
+        </div>
+        <a href="#" class="promo-card-link">Shop top electronics ›</a>
+      </div>
+
+      <div class="promo-card">
+        <div class="promo-card-header">
+          <div class="promo-card-title">Home Decor & Essentials</div>
+        </div>
+        <div class="promo-card-image-box">
+          <img class="promo-card-image" src="images/products/bathroom-rug.jpg" alt="Rug">
+        </div>
+        <a href="#" class="promo-card-link">Explore home collection ›</a>
+      </div>
+
+      <div class="promo-card">
+        <div class="promo-card-header">
+          <div class="promo-card-title">Fashion, Bags & Accessories</div>
+        </div>
+        <div class="promo-card-image-box">
+          <img class="promo-card-image" src="images/products/backpack.jpg" alt="Bags">
+        </div>
+        <a href="#" class="promo-card-link">Shop fashion new arrivals ›</a>
+      </div>
+    </section>
+
+    <!-- SECTION TITLE FOR PRODUCTS -->
+    <h2 class="products-section-title">Today's Featured Products</h2>
+
+    <!-- PRODUCTS GRID RENDERED VIA JAVASCRIPT -->
     <div class="products-grid js-products-grid">
     </div>
-  </div>
+  </main>
 
-  <script type="module" src="scripts/amazon.js"></script> <!-- Entry point -->
+  <script type="module" src="scripts/amazon.js"></script>
 </body>
 
 </html>

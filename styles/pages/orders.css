@@ -1,14 +1,11 @@
 .main {
   max-width: 850px;
+  min-height: calc(100vh - 120px);
+  box-sizing: border-box;
   margin-top: 115px;
-  margin-bottom: 100px;
+  margin-bottom: 80px;
   padding-left: 20px;
   padding-right: 20px;
-
-  /* margin-left: auto;
-     margin-right auto;
-     Is a trick for centering an element horizontally
-     without needing a container. */
   margin-left: auto;
   margin-right: auto;
 }
@@ -20,6 +17,8 @@
 }
 
 .orders-grid {
+  min-height: 400px;
+  box-sizing: border-box;
   display: grid;
   grid-template-columns: 1fr;
   row-gap: 50px;
@@ -124,8 +123,11 @@
 }
 
 .product-image-container img {
-  max-width: 110px;
-  max-height: 110px;
+  width: 110px;
+  height: 110px;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
 }
 
 .product-name {
@@ -194,9 +196,12 @@
   }
 
   .product-image-container img {
-    max-width: 150px;
-    max-height: 150px;
-  }
+  width: 110px;
+  height: 110px;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+}
 
   .product-name {
     margin-bottom: 10px;
@@ -224,3 +229,4 @@
     padding: 12px;
   }
 }
+

@@ -10,12 +10,17 @@ async function initOrdersPage() {
   updateCartQuantity();
   renderOrdersGrid();
 
-  // Load products so getProduct() returns names and images if fetched
-  try {
-    await loadProductsFetch();
-    renderOrdersGrid();
-  } catch (e) {
-    console.log("Using local products catalog for orders");
+  const hasMissingProduct = orders && orders.some((order) =>
+    order.products && order.products.some((p) => !getProduct(p.productId))
+  );
+
+  if (hasMissingProduct) {
+    try {
+      await loadProductsFetch();
+      renderOrdersGrid();
+    } catch (e) {
+      console.log("Using local products catalog for orders");
+    }
   }
 }
 
@@ -177,4 +182,5 @@ function attachBuyAgainEvents() {
     });
   });
 }
+
 

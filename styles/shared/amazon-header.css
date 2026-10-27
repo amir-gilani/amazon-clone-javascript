@@ -14,6 +14,8 @@
 
 /* ─── 1. TOP HEADER (60px) ─── */
 .amazon-header {
+  transition: transform 0.28s cubic-bezier(0.25, 0.8, 0.25, 1);
+  will-change: transform;
   background-color: var(--nav-bg);
   color: #ffffff;
   padding: 0 11px;
@@ -110,43 +112,52 @@
   flex: 1;
   margin: 0 10px;
   display: flex;
-  align-items: center;
+  align-items: stretch;
   height: 40px;
   border-radius: 4px;
   background-color: #ffffff;
-  border: 2px solid transparent;
+  overflow: hidden;
   box-sizing: border-box;
+  border: none;
+  transition: box-shadow 0.15s ease;
 }
 
+/* Orange Focus Ring: Around the WHOLE container (dor-ta-dor) */
 .amazon-header-middle-section:focus-within {
-  border-color: #e77600;
-  box-shadow: 0 0 0 2px rgba(228, 121, 17, 0.5);
+  box-shadow: 0 0 0 2px #e77600, 0 0 0 3px rgba(228, 121, 17, 0.5) !important;
+  outline: none !important;
 }
 
-/* Compact 'All ▾' Dropdown (Small Flat Rectangle) */
+/* Compact 'All ▾' Dropdown (Grey Box - 100% straight vertical right edge) */
 .nav-search-dropdown {
   background-color: #e6e6e6;
   color: #555555;
-  border: none;
-  border-right: 1px solid #cdcdcd;
-  border-radius: 0;
-  height: 100%;
-  padding: 0 18px 0 8px;
+  border: none !important;
+  border-right: 1px solid #cdcdcd !important;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+  height: 40px;
+  padding: 0 20px 0 10px;
   font-size: 12px;
   font-family: inherit;
   font-weight: 400;
   cursor: pointer;
-  outline: none;
+  outline: none !important;
+  box-shadow: none !important;
   width: auto;
-  min-width: 44px;
-  max-width: 52px;
+  min-width: 48px;
+  max-width: 56px;
   flex-shrink: 0;
+  margin: 0;
+  box-sizing: border-box;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
   background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%227%22%20height%3D%225%22%20viewBox%3D%220%200%207%205%22%3E%3Cpath%20fill%3D%22%23555555%22%20d%3D%22M0%200l3.5%204%203.5-4z%22%2F%3E%3C%2Fsvg%3E");
   background-repeat: no-repeat;
-  background-position: right 6px center;
+  background-position: right 7px center;
   transition: background-color 0.15s ease, color 0.15s ease;
 }
 
@@ -155,18 +166,36 @@
   color: #111111;
 }
 
+.nav-search-dropdown:focus,
+.nav-search-dropdown:focus-visible,
+.nav-search-dropdown:active {
+  outline: none !important;
+  box-shadow: none !important;
+  border-right: 1px solid #cdcdcd !important;
+}
+
 .search-bar {
   flex: 1;
   width: 0;
-  height: 100%;
+  height: 40px;
   padding: 7px 10px 8px;
-  border: none;
+  border: none !important;
   font-size: 15px;
   font-family: inherit;
   color: #111111;
-  outline: none;
-  background: transparent;
+  outline: none !important;
+  box-shadow: none !important;
+  background-color: #ffffff;
   box-sizing: border-box;
+  margin: 0;
+}
+
+.search-bar:focus,
+.search-bar:focus-visible,
+.search-bar:active {
+  outline: none !important;
+  box-shadow: none !important;
+  border: none !important;
 }
 
 .search-bar::placeholder {
@@ -174,29 +203,43 @@
   font-size: 15px;
 }
 
+/* Orange Search Button */
 .search-button {
-  background-color: var(--nav-btn-gold);
-  border: none;
+  background-color: #febd69;
+  border: none !important;
   width: 45px;
-  height: 100%;
+  height: 40px;
   border-top-right-radius: 4px;
   border-bottom-right-radius: 4px;
+  border-top-left-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   flex-shrink: 0;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none !important;
+  box-shadow: none !important;
   transition: background-color 0.15s ease;
 }
 
 .search-button:hover {
-  background-color: var(--nav-btn-gold-hover);
+  background-color: #f3a847;
+}
+
+.search-button:focus,
+.search-button:focus-visible {
+  outline: none !important;
+  box-shadow: none !important;
 }
 
 .search-icon {
   width: 20px;
   height: 20px;
-  opacity: 0.85;
+  opacity: 0.9;
 }
 
 /* ─── RIGHT: LANGUAGE, ACCOUNT, ORDERS, CART ─── */
@@ -310,6 +353,8 @@
 
 /* ─── 2. SUB-NAV BAR (#232f3e - 39px EXACT MATCH TO IMAGE 1) ─── */
 .amazon-subnav {
+  transition: transform 0.28s cubic-bezier(0.25, 0.8, 0.25, 1), opacity 0.22s ease;
+  will-change: transform, opacity;
   position: fixed;
   top: 60px;
   left: 0;
@@ -399,11 +444,317 @@
     height: 30px;
   }
   .amazon-header {
+  transition: transform 0.28s cubic-bezier(0.25, 0.8, 0.25, 1);
+  will-change: transform;
     height: 52px;
     padding: 0 8px;
   }
   .amazon-subnav {
+  transition: transform 0.28s cubic-bezier(0.25, 0.8, 0.25, 1), opacity 0.22s ease;
+  will-change: transform, opacity;
     top: 52px;
     height: 36px;
+  }
+}
+
+/* ==========================================================================
+   SMART SCROLLING HEADER & SUBNAV STATES
+   ========================================================================== */
+/* 1. SCROLLING DOWN: Hide both header 1 & header 2 completely */
+body.header-hidden .amazon-header {
+  transform: translateY(-100%) !important;
+}
+
+body.header-hidden .amazon-subnav {
+  transform: translateY(-110px) !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* 2. SCROLLING UP (BELOW BANNER): Only header 1 visible, subnav stays hidden */
+body.subnav-hidden .amazon-subnav {
+  transform: translateY(-60px) !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+@media (max-width: 576px) {
+  body.header-hidden .amazon-subnav {
+    transform: translateY(-95px) !important;
+  }
+  body.subnav-hidden .amazon-subnav {
+    transform: translateY(-52px) !important;
+  }
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   AUTHENTIC AMAZON HAMBURGER SIDEBAR MENU (HMENU)
+   ═══════════════════════════════════════════════════════════════ */
+
+/* Body scroll lock */
+body.hmenu-active {
+  overflow: hidden !important;
+}
+
+/* 1. Backdrop Overlay */
+.hmenu-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.76);
+  z-index: 99998;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.hmenu-backdrop.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* 2. Close Button 'X' (placed right outside drawer) */
+.hmenu-close-btn {
+  position: fixed;
+  top: 14px;
+  left: 380px;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 99999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  padding: 0;
+}
+
+.hmenu-close-btn svg {
+  width: 22px;
+  height: 22px;
+  stroke: #ffffff;
+  stroke-width: 2.6;
+  stroke-linecap: round;
+  transition: transform 0.15s ease;
+}
+
+.hmenu-close-btn:hover svg {
+  transform: scale(1.1);
+}
+
+.hmenu-close-btn.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* 3. Main Drawer Container */
+.hmenu-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 365px;
+  max-width: 85vw;
+  height: 100vh;
+  height: 100dvh;
+  background-color: #ffffff;
+  z-index: 99999;
+  box-shadow: 4px 0 16px rgba(0, 0, 0, 0.4);
+  transform: translateX(-100%);
+  transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+  color: #111111;
+}
+
+.hmenu-canvas.open {
+  transform: translateX(0);
+}
+
+/* 4. Drawer Header: "Hello, sign in" */
+.hmenu-header {
+  background-color: #232f3e;
+  height: 50px;
+  min-height: 50px;
+  padding: 0 36px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #ffffff;
+  text-decoration: none;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.hmenu-header:hover {
+  background-color: #1a232f;
+}
+
+.hmenu-user-avatar {
+  width: 27px;
+  height: 27px;
+  fill: #ffffff;
+}
+
+.hmenu-header-title {
+  font-size: 19px;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.2px;
+}
+
+/* 5. Scrollable Content Area */
+.hmenu-content {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 0 0 30px 0;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Subtle modern Amazon scrollbar */
+.hmenu-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.hmenu-content::-webkit-scrollbar-thumb {
+  background: #bbbbbb;
+  border-radius: 4px;
+}
+
+.hmenu-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* 6. Sections & Dividers */
+.hmenu-section {
+  padding: 14px 0 10px 0;
+  border-bottom: 1px solid #eaeded;
+}
+
+.hmenu-section:last-child {
+  border-bottom: none;
+}
+
+.hmenu-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #111111;
+  padding: 6px 36px 10px 36px;
+  margin: 0;
+  line-height: 1.25;
+}
+
+/* 7. Menu Item Links */
+.hmenu-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 13px 36px;
+  font-size: 14px;
+  color: #111111;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+  user-select: none;
+}
+
+.hmenu-item:hover {
+  background-color: #eaeded;
+  color: #111111;
+}
+
+.hmenu-item-text {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.hmenu-chevron {
+  width: 8px;
+  height: 8px;
+  border-top: 2px solid #888888;
+  border-right: 2px solid #888888;
+  transform: rotate(45deg);
+  display: inline-block;
+}
+
+/* "See all" / "See less" Accordion Items */
+.hmenu-see-all {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 36px;
+  font-size: 14px;
+  color: #111111;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+  user-select: none;
+}
+
+.hmenu-see-all:hover {
+  background-color: #eaeded;
+}
+
+.hmenu-arrow-down {
+  width: 8px;
+  height: 8px;
+  border-bottom: 2px solid #555555;
+  border-right: 2px solid #555555;
+  transform: rotate(45deg);
+  display: inline-block;
+  margin-top: -3px;
+  transition: transform 0.2s ease;
+}
+
+.hmenu-see-all.expanded .hmenu-arrow-down {
+  transform: rotate(-135deg);
+  margin-top: 3px;
+}
+
+.hmenu-accordion-content {
+  display: none;
+}
+
+.hmenu-accordion-content.expanded {
+  display: block;
+}
+
+.hmenu-globe-icon {
+  width: 15px;
+  height: 15px;
+  stroke: #888888;
+  stroke-width: 1.8;
+  fill: none;
+}
+
+.hmenu-flag {
+  display: inline-flex;
+  align-items: center;
+  font-size: 16px;
+}
+
+@media (max-width: 480px) {
+  .hmenu-canvas {
+    width: 310px;
+  }
+  .hmenu-close-btn {
+    left: 320px;
+  }
+  .hmenu-header,
+  .hmenu-title,
+  .hmenu-item,
+  .hmenu-see-all {
+    padding-left: 20px;
+    padding-right: 20px;
   }
 }

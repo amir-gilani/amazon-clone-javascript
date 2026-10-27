@@ -1,6 +1,6 @@
 .main {
   max-width: 850px;
-  margin-top: 90px;
+  margin-top: 115px;
   margin-bottom: 100px;
   padding-left: 30px;
   padding-right: 30px;
@@ -78,4 +78,11 @@
   background-color: green;
   border-radius: 50px;
   width: 50%;
+}
+
+.order-tracking {
+  background-color: #ffffff;
+  border: 1px solid rgb(213, 217, 217);
+  border-radius: 8px;
+  padding: 30px 35px 40px 35px;
 }

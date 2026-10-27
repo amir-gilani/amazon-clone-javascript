@@ -7,14 +7,15 @@
 import formatCurrency from "../scripts/utils/money.js";
 
 export function getProduct(productId) {
-  // FIND MATCHING PRODUCT
-  let matchingProduct;
-  products.forEach((product) => {
-    if (productId === product.id) {
-      matchingProduct = product;
+  let matchingProduct = products.find((product) => product.id === productId);
+  if (!matchingProduct && typeof rawProductsCatalog !== 'undefined') {
+    const raw = rawProductsCatalog.find((p) => p.id === productId);
+    if (raw) {
+      if (raw.type === "clothing") matchingProduct = new Clothing(raw);
+      else if (raw.type === "Appliance") matchingProduct = new Appliance(raw);
+      else matchingProduct = new Product(raw);
     }
-  });
-
+  }
   return matchingProduct;
 }
 
@@ -89,9 +90,10 @@ class Appliance extends Product {
 export let products = [];
 
 export function loadProductsFetch() {
-  const promise = fetch("https://supersimplebackend.dev/products").then((response) => {
-    return response.json();
-  }).then((productsData) => {
+  const promise = Promise.race([
+    fetch("https://supersimplebackend.dev/products").then((response) => response.json()),
+    new Promise((_, reject) => setTimeout(() => reject(new Error('timeout')), 1200))
+  ]).then((productsData) => {
     products = productsData.map((productDetails) => {
       if (productDetails.type === "clothing") {
         return new Clothing(productDetails);
@@ -101,11 +103,21 @@ export function loadProductsFetch() {
         return new Product(productDetails);
       }
     });
-
-    console.log("Load products");
-  })/*.catch(() => {
-    console.log('Unexpected error. Please try again later.');
-  })*/
+    console.log("Load products success");
+  }).catch(() => {
+    console.log("Using static fallback catalog");
+    if (!products || products.length === 0) {
+      products = rawProductsCatalog.map((productDetails) => {
+        if (productDetails.type === "clothing") {
+          return new Clothing(productDetails);
+        } else if (productDetails.type === "Appliance") {
+          return new Appliance(productDetails);
+        } else {
+          return new Product(productDetails);
+        }
+      });
+    }
+  });
   return promise;
 }
 
@@ -140,8 +152,8 @@ export function loadProducts(fun) {
   xhr.open("GET", "https://supersimplebackend.dev/products");
   xhr.send();
 }
-/*
-export const products = [
+// Fallback local catalog
+export const rawProductsCatalog = [
   // ═══════════════════════════════════════════════════════════════════════════════════════
   // APPAREL & FOOTWEAR (12 products)
   // ═══════════════════════════════════════════════════════════════════════════════════════
@@ -518,7 +530,7 @@ export const products = [
     return new Product(productDetails);
   }
 });
-*/
+// End fallback local catalog
 // TOTAL: 32 PRODUCTS | 12 Apparel/Footwear | 13 Kitchen | 7 Home/Bathroom | 5 Accessories | 2 Sports | 2 Misc | 2 Added
 
 /*
@@ -550,3 +562,15 @@ const object3 = {
 }
 object3.method();
 */
+
+
+// Initialize products immediately with fallback catalog
+products = rawProductsCatalog.map((productDetails) => {
+  if (productDetails.type === "clothing") {
+    return new Clothing(productDetails);
+  } else if (productDetails.type === "Appliance") {
+    return new Appliance(productDetails);
+  } else {
+    return new Product(productDetails);
+  }
+});

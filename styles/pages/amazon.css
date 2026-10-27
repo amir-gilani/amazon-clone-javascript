@@ -3,7 +3,7 @@
    ═══════════════════════════════════════════════════════════════════════════════════════ */
 
 body {
-  background-color: #e3e6e6;
+  background-color: #ffffff;
 }
 
 .main {
@@ -11,340 +11,674 @@ body {
   max-width: 1540px;
   margin-left: auto;
   margin-right: auto;
-  padding: 10px 18px 40px;
+  padding: 10px 18px 0;
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   1. HERO DEALS HORIZONTAL CAROUSEL (EXACT MATCH TO SCREENSHOT)
+   1. AUTHENTIC AMAZON GWM CAROUSEL DECK (#gwm-Deck-cf)
    ═══════════════════════════════════════════════════════════════ */
-.hero-deals-section {
+#gwm-Deck-cf {
+  width: 100%;
   position: relative;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
 }
 
-.hero-deals-scroll {
-  display: flex;
-  gap: 14px;
+.gwm-window-layout {
+  position: relative;
+  width: 100%;
+}
+
+.gwm-window-container-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.gwm-window-container {
   overflow-x: auto;
-  padding-bottom: 10px;
-  scrollbar-width: none;
+  overflow-y: hidden;
   scroll-behavior: smooth;
+  scrollbar-width: none;
+  width: 100%;
+  padding-bottom: 6px;
 }
 
-.hero-deals-scroll::-webkit-scrollbar {
+.gwm-window-container::-webkit-scrollbar {
   display: none;
 }
 
-.hero-deal-card {
-  flex: 0 0 270px;
-  height: 380px;
-  border-radius: 12px;
-  padding: 18px;
+.gwm-window-wrapper {
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  text-decoration: none;
-  color: #ffffff;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 10px; /* Authentic Amazon spacing */
+  white-space: nowrap;
+}
+
+/* Card Size: Authentic Large Desktop Dimensions (285px width x 456px height, 1:1.60 ratio) */
+li.gwm-window-tile {
+  flex: 0 0 285px;
+  width: 285px;
+  min-width: 285px;
+  height: 456px;
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Card Container */
+.hero-deal-card {
+  width: 100%;
+  height: 100%;
+  border-radius: 16px;
+  display: block;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  text-decoration: none;
+  border: none;
+  box-shadow: none;
+  box-sizing: border-box;
+  background-color: #232f3e;
 }
 
 .hero-deal-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  /* No scale or movement on hover */
+  transform: none;
+  box-shadow: none;
+  border: none;
 }
 
-.hero-deal-card.card-purple {
-  background: linear-gradient(180deg, #9333ea 0%, #7e22ce 40%, #581c87 100%);
+/* Full Bleed Background Image */
+.hero-deal-bg-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+  display: block;
+  border-radius: 16px;
 }
 
-.hero-deal-card.card-violet {
-  background: linear-gradient(180deg, #8b5cf6 0%, #7c3aed 40%, #4c1d95 100%);
+/* Header Content Placed Over Top of Image */
+.hero-deal-content {
+  position: relative;
+  z-index: 2;
+  padding: 20px 20px 0 20px;
+  display: flex;
+  flex-direction: column;
 }
 
-.hero-deal-card.card-green {
-  background: linear-gradient(180deg, #10b981 0%, #059669 40%, #064e3b 100%);
-}
-
-.hero-deal-card.card-rose {
-  background: linear-gradient(180deg, #be185d 0%, #9d174d 40%, #831843 100%);
-}
-
-.hero-deal-card.card-sand {
-  background: linear-gradient(180deg, #78716c 0%, #57534e 40%, #44403c 100%);
-}
-
-.hero-deal-tag {
-  font-size: 13px;
+.wdSubTitle {
+  font-size: 14px;
   font-weight: 500;
-  opacity: 0.95;
-  margin-bottom: 4px;
+  line-height: 1.3;
+  color: #ffffff;
+  margin-bottom: 5px;
+  letter-spacing: 0.15px;
 }
 
-.hero-deal-title {
-  font-size: 22px;
+.wdTitle {
+  font-size: 23px;
   font-weight: 800;
   line-height: 1.25;
-  margin-bottom: 12px;
+  color: #ffffff;
+  margin: 0;
+  white-space: normal;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
 }
 
-.hero-deal-image-wrap {
-  width: 100%;
-  height: 200px;
+/* Card with Dark Text (Costumes / Fall Premium) */
+.hero-deal-card.theme-dark-text .wdSubTitle {
+  color: #0f1111;
+  font-weight: 600;
+}
+
+.hero-deal-card.theme-dark-text .wdTitle {
+  color: #0f1111;
+  text-shadow: none;
+}
+
+/* AI Refresh Icon (↺) at Bottom Left */
+.hero-deal-ai-icon {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  z-index: 3;
+  width: 28px;
+  height: 28px;
+  background: rgba(0, 0, 0, 0.78);
+  color: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  line-height: 1;
+  pointer-events: none;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.35);
+}
+
+/* Navigation Buttons (Left and Right) */
+.gwm-navigation-left-button,
+.gwm-navigation-right-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 90px;
+  background-color: #ffffff;
+  border: 1px solid #d5d9d9;
+  border-radius: 6px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.24);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  cursor: pointer;
+  transition: background-color 0.15s ease, box-shadow 0.15s ease;
+  text-decoration: none;
+}
+
+.gwm-navigation-left-button {
+  left: 0;
+}
+
+.gwm-navigation-right-button {
+  right: 0;
+}
+
+.gwm-navigation-left-button:hover,
+.gwm-navigation-right-button:hover {
+  background-color: #f7fafa;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   2. AUTHENTIC AMAZON 4-QUADRANT CATEGORY CARDS (QUAD CARDS)
+   ═══════════════════════════════════════════════════════════════ */
+.quad-categories-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+@media (max-width: 1250px) {
+  .quad-categories-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+}
+
+@media (max-width: 650px) {
+  .quad-categories-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
+.quad-category-card {
+  background: #ffffff;
+  border: 1px solid #e7e7e7;
   border-radius: 8px;
-  overflow: hidden;
-  background: rgba(255, 255, 255, 0.95);
+  padding: 20px 16px 16px 16px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: none;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+  min-height: 430px;
+  position: relative;
+}
+
+.quad-category-card:hover {
+  box-shadow: none;
+  border-color: #d5d9d9;
+}
+
+.quad-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.quad-card-title {
+  font-size: 19px;
+  font-weight: 700;
+  color: #0f1111;
+  margin: 0;
+  line-height: 1.28;
+  cursor: pointer;
+  flex: 1;
+  padding-right: 8px;
+  transition: color 0.15s ease;
+}
+
+.quad-card-title:hover {
+  color: #c7511f;
+}
+
+/* Arrow / Chevron Button on top-right */
+.quad-card-arrow-btn {
+  background: #ffffff;
+  border: 1px solid #d5d9d9;
+  font-size: 20px;
+  font-weight: 700;
+  color: #0f1111;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  transition: background-color 0.15s ease, transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+  outline: none;
+  padding: 0;
+  flex-shrink: 0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.quad-card-arrow-btn:hover {
+  background-color: #f0f2f2;
+  border-color: #a6a6a6;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  transform: scale(1.08);
+}
+
+.quad-card-arrow-btn:active {
+  background-color: #e3e6e6;
+  transform: scale(0.96);
+}
+
+/* 2x2 Grid of 4 Products */
+.quad-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, auto);
+  gap: 12px 14px;
+  flex: 1;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.quad-grid.fade-out {
+  opacity: 0;
+  transform: scale(0.96);
+}
+
+/* Individual Product in 4-pack */
+.quad-item {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: #0f1111;
+  cursor: pointer;
+  border-radius: 8px;
+  padding: 4px;
+  transition: background-color 0.15s ease;
+  position: relative;
+}
+
+.quad-item:hover {
+  background-color: #fafafa;
+}
+
+.quad-item-img-box {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 8px;
+  background-color: #f7f7f7;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 10px;
-}
-
-.hero-deal-image {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
-  transition: transform 0.3s ease;
-}
-
-.hero-deal-card:hover .hero-deal-image {
-  transform: scale(1.06);
-}
-
-/* ═══════════════════════════════════════════════════════════════
-   2. CATEGORY PROMO CARDS (4-COLUMN GRID)
-   ═══════════════════════════════════════════════════════════════ */
-.promo-cards-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
-  margin-bottom: 24px;
-}
-
-@media (max-width: 1100px) {
-  .promo-cards-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 600px) {
-  .promo-cards-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-.promo-card {
-  background: #ffffff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.promo-card-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 14px;
-}
-
-.promo-card-title {
-  font-size: 18px;
-  font-weight: 700;
-  color: #0f1111;
-}
-
-.promo-card-image-box {
-  width: 100%;
-  height: 240px;
-  background: #f7f7f7;
-  border-radius: 6px;
+  box-sizing: border-box;
   overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 14px;
-  padding: 16px;
+  position: relative;
 }
 
-.promo-card-image {
-  max-width: 100%;
-  max-height: 100%;
+.quad-item-img {
+  max-width: 90%;
+  max-height: 90%;
   object-fit: contain;
   transition: transform 0.25s ease;
 }
 
-.promo-card:hover .promo-card-image {
-  transform: scale(1.05);
+.quad-item:hover .quad-item-img {
+  transform: scale(1.06);
 }
 
-.promo-card-link {
-  color: #007185;
-  font-size: 13px;
+.quad-item-label {
+  font-size: 12px;
+  font-weight: 500;
+  color: #0f1111;
+  margin-top: 6px;
+  line-height: 1.3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.quad-item-price {
+  font-size: 11px;
+  font-weight: 700;
+  color: #565959;
+  margin-top: 2px;
+}
+
+.quad-item-add-btn {
+  margin-top: 5px;
+  font-size: 11px;
   font-weight: 600;
-  text-decoration: none;
+  background-color: #ffd814;
+  border: 1px solid #fcd200;
+  border-radius: 12px;
+  padding: 3px 8px;
+  cursor: pointer;
+  align-self: flex-start;
+  transition: background-color 0.15s ease, transform 0.1s ease;
+  outline: none;
 }
 
-.promo-card-link:hover {
+.quad-item-add-btn:hover {
+  background-color: #f7ca00;
+  transform: scale(1.04);
+}
+
+/* Card Footer */
+.quad-card-footer {
+  margin-top: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.quad-card-link {
+  font-size: 13px;
+  color: #007185;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.quad-card-link:hover {
   color: #c7511f;
   text-decoration: underline;
 }
 
-/* ═══════════════════════════════════════════════════════════════
-   3. PRODUCTS GRID SECTION (AMAZON PRODUCTS)
-   ═══════════════════════════════════════════════════════════════ */
-.products-section-title {
-  font-size: 22px;
-  font-weight: 800;
-  color: #0f1111;
-  margin-bottom: 14px;
-  padding-left: 4px;
+.quad-page-badge {
+  font-size: 11px;
+  color: #565959;
+  font-weight: 600;
+  background: #f0f2f2;
+  padding: 2px 7px;
+  border-radius: 10px;
 }
 
-.products-grid {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 14px;
+/* ==========================================================================
+   AUTHENTIC AMAZON 2026 FOOTER (SECTIONS 1 & 2)
+   ========================================================================== */
+.navFooter {
+  width: 100%;
+  font-family: "Amazon Ember", Arial, sans-serif;
+  margin-top: 40px;
 }
 
-@media (max-width: 1600px) {
-  .products-grid {
-    grid-template-columns: repeat(5, 1fr);
-  }
+/* 1. Back to Top Bar */
+.navFooterBackToTop {
+  display: block;
+  background-color: #37475A;
+  color: #FFFFFF;
+  text-align: center;
+  padding: 15px 0;
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
 }
 
-@media (max-width: 1300px) {
-  .products-grid {
-    grid-template-columns: repeat(4, 1fr);
-  }
+.navFooterBackToTop:hover {
+  background-color: #485769;
 }
 
-@media (max-width: 1000px) {
-  .products-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
+.navFooterBackToTopText {
+  color: #FFFFFF;
 }
 
-@media (max-width: 768px) {
-  .products-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+/* 2. Section 1: Main 4-Column Directory (#232F3E) */
+.navFooterDirectory {
+  background-color: #232F3E;
+  padding: 42px 0 35px 0;
 }
 
-@media (max-width: 480px) {
-  .products-grid {
-    grid-template-columns: 1fr;
-  }
+.navFooterVerticalRow {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
 }
 
-.product-container {
-  padding: 20px 16px;
-  background: #ffffff;
-  border-radius: 8px;
+.navFooterCol {
   display: flex;
   flex-direction: column;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
 }
 
-.product-container:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+.navFooterColHead {
+  color: #FFFFFF;
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 14px;
 }
 
-.product-image-container {
+.navFooterCol ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.navFooterCol li {
+  margin-bottom: 9px;
+}
+
+.navFooterCol a {
+  color: #DDD;
+  font-size: 13px;
+  text-decoration: none;
+  line-height: 1.35;
+  transition: color 0.15s ease;
+  display: inline-block;
+}
+
+.navFooterCol a:hover {
+  text-decoration: underline;
+  color: #FFFFFF;
+}
+
+.navFooterColSpecial a {
+  color: #DDD;
+  font-weight: 500;
+}
+
+/* Sub-bar: Logo + Language / Country Selection */
+.navFooterLine {
+  background-color: #232F3E;
+  border-top: 1px solid #3a4553;
+  padding: 24px 0 28px 0;
+}
+
+.navFooterSubBar {
+  max-width: 1000px;
+  margin: 0 auto;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 180px;
-  margin-bottom: 14px;
+  gap: 75px;
 }
 
-.product-image {
-  max-width: 100%;
-  max-height: 100%;
+.navFooterLogoLink {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.navFooterLogo {
+  width: 82px;
+  height: auto;
   object-fit: contain;
 }
 
-.product-name {
-  height: 40px;
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 1.35;
-  color: #0f1111;
-  margin-bottom: 6px;
-}
-
-.product-rating-container {
+.navFooterSelectGroup {
   display: flex;
   align-items: center;
-  gap: 6px;
-  margin-bottom: 6px;
+  gap: 9px;
 }
 
-.product-rating-stars {
-  width: 85px;
-}
-
-.product-rating-count {
-  color: #007185;
+.navFooterSelectBtn {
+  background: transparent;
+  border: 1px solid #848688;
+  border-radius: 3px;
+  color: #CCC;
   font-size: 13px;
-  font-weight: 500;
+  padding: 6px 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   cursor: pointer;
+  transition: border-color 0.15s ease, color 0.15s ease;
+  font-family: inherit;
 }
 
-.product-price {
-  font-size: 18px;
-  font-weight: 700;
-  color: #0f1111;
-  margin-bottom: 10px;
+.navFooterSelectBtn:hover {
+  border-color: #DDDDDD;
+  color: #FFFFFF;
 }
 
-.product-quantity-container {
-  margin-bottom: 12px;
+.navFooterGlobe {
+  stroke: #CCCCCC;
 }
 
-.product-spacer {
-  flex: 1;
+.navFooterArrows {
+  display: inline-flex;
+  margin-left: 2px;
+  color: #888888;
 }
 
-.added-to-cart {
-  color: #067d62;
-  font-size: 14px;
-  font-weight: 600;
+.navFooterFlag {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 1px;
+  overflow: hidden;
+  box-shadow: 0 0 1px rgba(0,0,0,0.5);
+}
+
+/* 3. Section 2: Deep Dark Micro-services Directory (#131A22) */
+.navFooterServices {
+  background-color: #131A22;
+  padding: 38px 24px 30px 24px;
+}
+
+.navFooterServicesGrid {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  column-gap: 22px;
+  row-gap: 22px;
+  text-align: left;
+}
+
+.navFooterServiceItem {
+  text-decoration: none;
   display: flex;
+  flex-direction: column;
+}
+
+.navFooterServiceTitle {
+  color: #DDD;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.25;
+  margin-bottom: 2px;
+}
+
+.navFooterServiceDesc {
+  color: #999;
+  font-size: 11px;
+  line-height: 1.22;
+}
+
+.navFooterServiceItem:hover .navFooterServiceTitle,
+.navFooterServiceItem:hover .navFooterServiceDesc {
+  text-decoration: underline;
+  color: #FFF;
+}
+
+/* Row 5 positioning under columns 3, 4, 5 */
+.navFooterColPos3 {
+  grid-column: 3;
+}
+
+.navFooterColPos4 {
+  grid-column: 4;
+}
+
+.navFooterColPos5 {
+  grid-column: 5;
+}
+
+/* Legal Links & Copyright */
+.navFooterLegal {
+  max-width: 1000px;
+  margin: 36px auto 0 auto;
+  text-align: center;
+}
+
+.navFooterLegalLinks {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 8px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.navFooterLegalLinks a {
+  color: #DDD;
+  font-size: 12px;
+  text-decoration: none;
+  display: inline-flex;
   align-items: center;
   gap: 6px;
-  margin-bottom: 8px;
-  opacity: 0;
-  transition: opacity 0.2s ease;
 }
 
-.js-added-to-cart {
-  opacity: 1;
+.navFooterLegalLinks a:hover {
+  text-decoration: underline;
 }
 
-.added-to-cart img {
-  height: 16px;
+.navFooterPrivacyChoice {
+  display: inline-flex;
+  align-items: center;
 }
 
-.add-to-cart-button {
-  width: 100%;
-  padding: 8px 12px;
-  font-size: 13px;
-  font-weight: 600;
-  background-color: #ffd814;
-  border: 1px solid #fcd200;
-  border-radius: 20px;
-  box-shadow: 0 2px 5px rgba(213, 217, 217, 0.5);
-  transition: background-color 0.15s ease;
+.navFooterPrivacyIcon {
+  margin-left: 4px;
+  vertical-align: middle;
 }
 
-.add-to-cart-button:hover {
-  background-color: #f7ca00;
-  border-color: #f2c200;
+.navFooterCopyright {
+  color: #DDD;
+  font-size: 12px;
+  text-align: center;
+  padding-bottom: 24px;
 }

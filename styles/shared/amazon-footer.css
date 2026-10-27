@@ -1,0 +1,377 @@
+/* ==========================================================================
+   AUTHENTIC AMAZON PERSONALIZED RECOMMENDATIONS BAR
+   ========================================================================== */
+.personalized-recs-bar {
+  background: #ffffff;
+  width: 100%;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.personalized-recs-inner {
+  border-top: 1px solid #e7e7e7;
+  border-bottom: 1px solid #e7e7e7;
+  padding: 26px 16px 22px 16px;
+  text-align: center;
+  box-sizing: border-box;
+  width: 100%;
+  background: #ffffff;
+}
+
+.personalized-recs-heading {
+  font-size: 24px;
+  font-weight: 700;
+  color: #0f1111;
+  margin-bottom: 12px;
+  line-height: 1.3;
+}
+
+.personalized-signin-button {
+  display: inline-block;
+  width: 240px;
+  max-width: 90%;
+  background: #ffd814;
+  border: 1px solid #fcd200;
+  border-radius: 100px;
+  padding: 8px 0;
+  font-size: 14px;
+  font-weight: 400;
+  color: #0f1111;
+  text-decoration: none;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+  transition: background 0.15s ease;
+  cursor: pointer;
+  text-align: center;
+}
+
+.personalized-signin-button:hover {
+  background: #f7ca00;
+}
+
+.personalized-subtext {
+  font-size: 11px;
+  color: #0f1111;
+  margin-top: 8px;
+  line-height: 1.5;
+}
+
+.personalized-subtext a {
+  color: #007185;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.personalized-subtext a:hover {
+  color: #c7511f;
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   AUTHENTIC AMAZON FOOTER (SECTIONS 1, 2, 3 & LEGAL)
+   ========================================================================== */
+.navFooter {
+  width: 100%;
+  font-family: "Amazon Ember", Arial, sans-serif;
+  margin-top: 0;
+}
+
+/* 1. Back to Top Bar (#37475A) */
+.navFooterBackToTop {
+  display: block;
+  background-color: #37475A;
+  color: #FFFFFF;
+  text-align: center;
+  padding: 15px 0;
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.navFooterBackToTop:hover {
+  background-color: #485769;
+}
+
+.navFooterBackToTopText {
+  color: #FFFFFF;
+}
+
+/* 2. Section 1: Main 4-Column Directory (#232F3E) */
+.navFooterDirectory {
+  background-color: #232F3E;
+  padding: 42px 0 35px 0;
+}
+
+.navFooterVerticalRow {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.navFooterCol {
+  display: flex;
+  flex-direction: column;
+}
+
+.navFooterColHead {
+  color: #FFFFFF;
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+
+.navFooterCol ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.navFooterCol li {
+  margin-bottom: 9px;
+}
+
+.navFooterCol a {
+  color: #DDD;
+  font-size: 13px;
+  text-decoration: none;
+  line-height: 1.35;
+  transition: color 0.15s ease;
+  display: inline-block;
+}
+
+.navFooterCol a:hover {
+  text-decoration: underline;
+  color: #FFFFFF;
+}
+
+.navFooterColSpecial a {
+  color: #DDD;
+  font-weight: 500;
+}
+
+/* Sub-bar: Logo + Language / Country Selection */
+.navFooterLine {
+  background-color: #232F3E;
+  border-top: 1px solid #3a4553;
+  padding: 24px 0 28px 0;
+}
+
+.navFooterSubBar {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 75px;
+}
+
+.navFooterLogoLink {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.navFooterLogo {
+  width: 82px;
+  height: auto;
+  object-fit: contain;
+}
+
+.navFooterSelectGroup {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.navFooterSelectBtn {
+  background: transparent;
+  border: 1px solid #848688;
+  border-radius: 3px;
+  color: #CCC;
+  font-size: 13px;
+  padding: 6px 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: border-color 0.15s ease, color 0.15s ease;
+  font-family: inherit;
+}
+
+.navFooterSelectBtn:hover {
+  border-color: #DDDDDD;
+  color: #FFFFFF;
+}
+
+.navFooterGlobe {
+  stroke: #CCCCCC;
+}
+
+.navFooterArrows {
+  display: inline-flex;
+  margin-left: 2px;
+  color: #888888;
+}
+
+.navFooterFlag {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 1px;
+  overflow: hidden;
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.5);
+}
+
+/* 3. Section 2: Deep Dark Micro-services Directory (#131A22) */
+.navFooterServices {
+  background-color: #131A22;
+  padding: 38px 24px 30px 24px;
+}
+
+.navFooterServicesGrid {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  column-gap: 22px;
+  row-gap: 22px;
+  text-align: left;
+}
+
+.navFooterServiceItem {
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.navFooterServiceTitle {
+  color: #DDD;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.25;
+  margin-bottom: 2px;
+}
+
+.navFooterServiceDesc {
+  color: #999;
+  font-size: 11px;
+  line-height: 1.22;
+}
+
+.navFooterServiceItem:hover .navFooterServiceTitle,
+.navFooterServiceItem:hover .navFooterServiceDesc {
+  text-decoration: underline;
+  color: #FFF;
+}
+
+/* Row 5 positioning under columns 3, 4, 5 */
+.navFooterColPos3 {
+  grid-column: 3;
+}
+
+.navFooterColPos4 {
+  grid-column: 4;
+}
+
+.navFooterColPos5 {
+  grid-column: 5;
+}
+
+/* 4. Legal Links & Copyright Bar (#131A22) */
+.navFooterLegal {
+  max-width: 1000px;
+  margin: 36px auto 0 auto;
+  text-align: center;
+}
+
+.navFooterLegalLinks {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 8px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.navFooterLegalLinks a {
+  color: #DDD;
+  font-size: 12px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.navFooterLegalLinks a:hover {
+  text-decoration: underline;
+}
+
+.navFooterPrivacyChoice {
+  display: inline-flex;
+  align-items: center;
+}
+
+.navFooterPrivacyIcon {
+  margin-left: 4px;
+  vertical-align: middle;
+}
+
+.navFooterCopyright {
+  color: #DDD;
+  font-size: 12px;
+  text-align: center;
+  padding-bottom: 24px;
+}
+
+/* 5. Responsive Breakpoints */
+@media (max-width: 1024px) {
+  .navFooterServicesGrid {
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 16px;
+    row-gap: 18px;
+  }
+
+  .navFooterColPos3,
+  .navFooterColPos4,
+  .navFooterColPos5 {
+    grid-column: auto;
+  }
+
+  .navFooterSubBar {
+    gap: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .navFooterVerticalRow {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .navFooterCol {
+    width: 100%;
+  }
+
+  .navFooterServicesGrid {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 14px;
+    row-gap: 14px;
+  }
+
+  .navFooterSubBar {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .navFooterLegalLinks {
+    gap: 10px;
+  }
+}

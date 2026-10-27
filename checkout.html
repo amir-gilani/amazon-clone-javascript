@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>Checkout</title>
+  <title>Amazon.com Shopping Cart</title>
 
   <!-- This code is needed for responsive design to work.
       (Responsive design = make the website look good on
@@ -17,41 +17,539 @@
   <!-- Here are the CSS files for this page. -->
   <link rel="stylesheet" href="styles/shared/general.css">
   <link rel="stylesheet" href="styles/pages/checkout/checkout-header.css">
+  <link rel="stylesheet" href="styles/shared/amazon-header.css">
+  <link rel="stylesheet" href="styles/shared/amazon-footer.css">
   <link rel="stylesheet" href="styles/pages/checkout/checkout.css">
 </head>
 
 <body>
-  <div class="checkout-header">
-    <div class="header-content">
-      <div class="checkout-header-left-section">
-        <a href="amazon.html">
-          <img class="amazon-logo" src="images/amazon-logo.png">
-          <img class="amazon-mobile-logo" src="images/amazon-mobile-logo.png">
+    <!-- ==========================================
+       AUTHENTIC AMAZON SOLID HEADER (#131921)
+       ========================================== -->
+  <header class="amazon-header">
+    <!-- Left Section: Logo & Deliver To -->
+    <div class="amazon-header-left-section">
+      <a href="amazon.html" class="nav-link nav-logo-link">
+        <img class="amazon-logo" src="images/amazon-logo-white.png" alt="Amazon Logo">
+        <img class="amazon-mobile-logo" src="images/amazon-mobile-logo-white.png" alt="Amazon Mobile Logo">
+      </a>
+
+      <div class="nav-link nav-location">
+        <svg class="nav-location-icon" viewBox="0 0 24 24">
+          <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+        </svg>
+        <div class="nav-location-text">
+          <span class="nav-line-1">Delivering to Waterbury 06708</span>
+          <span class="nav-line-2">Update location</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Middle Section: Search with Compact 'All' Dropdown -->
+    <div class="amazon-header-middle-section">
+      <select class="nav-search-dropdown js-search-category" aria-label="Search in">
+        <option value="all" selected>All</option>
+        <option value="deals">Deals</option>
+        <option value="electronics">Electronics</option>
+        <option value="clothing">Fashion</option>
+        <option value="home">Home</option>
+        <option value="beauty">Beauty</option>
+        <option value="books">Books</option>
+      </select>
+
+      <input class="search-bar js-search-bar" type="text" placeholder="Search Amazon">
+
+      <button class="search-button js-search-button" aria-label="Search">
+        <img class="search-icon" src="images/icons/search-icon.png" alt="Search">
+      </button>
+    </div>
+
+    <!-- Right Section: Language, Account, Orders, Cart -->
+    <div class="amazon-header-right-section">
+      <div class="nav-link nav-language">
+        <svg class="nav-flag-svg" viewBox="0 0 24 16" width="22" height="15">
+          <rect width="24" height="16" fill="#b22234"/>
+          <path d="M0,1.23h24 M0,3.69h24 M0,6.15h24 M0,8.61h24 M0,11.07h24 M0,13.53h24" stroke="#ffffff" stroke-width="1.23"/>
+          <rect width="9.6" height="8.61" fill="#3c3b6e"/>
+        </svg>
+        <span>EN</span>
+        <span class="nav-arrow">&#9662;</span>
+      </div>
+
+      <a class="nav-link nav-account" href="#">
+        <span class="nav-line-1">Hello, sign in</span>
+        <span class="nav-line-2">Account &amp; Lists <span class="nav-arrow">&#9662;</span></span>
+      </a>
+
+      <a class="nav-link nav-orders" href="orders.html">
+        <span class="nav-line-1">Returns</span>
+        <span class="nav-line-2">&amp; Orders</span>
+      </a>
+
+      <a class="nav-link cart-link" href="checkout.html">
+        <div class="cart-icon-wrapper">
+          <img class="cart-icon" src="images/icons/cart-icon.png" alt="Cart">
+          <div class="cart-quantity js-cart-quantity js-checkout-header-quantity"></div>
+        </div>
+        <div class="cart-text">Cart</div>
+      </a>
+    </div>
+  </header>
+
+  <!-- ==========================================
+       SUB-NAV BAR (#232F3E)
+       ========================================== -->
+  <nav class="amazon-subnav">
+    <a href="amazon.html" class="subnav-link subnav-link-all">
+      <div class="subnav-hamburger-icon">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      All
+    </a>
+    <a href="#" class="subnav-link">Prime <span class="nav-arrow">&#9662;</span></a>
+    <a href="#" class="subnav-link">Groceries <span class="nav-arrow">&#9662;</span></a>
+    <a href="#" class="subnav-link">Today's Deals</a>
+    <a href="#" class="subnav-link">Coupons</a>
+    <a href="#" class="subnav-link">Pharmacy</a>
+    <a href="#" class="subnav-link">Whole Foods</a>
+    <a href="#" class="subnav-link">Audible</a>
+    <a href="#" class="subnav-link">Music</a>
+    <a href="#" class="subnav-link">Amazon Home <span class="nav-arrow">&#9662;</span></a>
+    <a href="#" class="subnav-link">Beauty &amp; Personal Care</a>
+    <a href="#" class="subnav-link">Registry</a>
+    <a href="#" class="subnav-link">Pet Supplies</a>
+    <a href="#" class="subnav-link">Automotive</a>
+    <a href="#" class="subnav-link">New Releases</a>
+    <a href="#" class="subnav-link">Fashion</a>
+  </nav>
+
+  <!-- ==========================================
+       AUTHENTIC AMAZON SHOPPING CART & CHECKOUT
+       ========================================== -->
+  <main class="cart-page-main">
+    <!-- Top Visa Card Promo Banner -->
+    <section class="visa-promo-card">
+      <div class="visa-promo-left">
+        <img class="visa-promo-thumb" src="images/products/athletic-cotton-socks-6-pairs.jpg" class="visa-promo-thumb js-visa-promo-thumb" alt="Amazon Visa Offer">
+        <div class="visa-promo-headline">
+          Get <strong>$60 off instantly</strong> upon approval for <strong>Amazon Visa</strong>.
+        </div>
+      </div>
+      <div class="visa-promo-right">
+        <div class="visa-promo-breakdown">
+          <div class="visa-row">
+            <span class="visa-label">Current total:</span>
+            <span class="visa-val js-visa-current-total">$151.93</span>
+          </div>
+          <div class="visa-row">
+            <span class="visa-label">10% Card Savings:</span>
+            <span class="visa-val visa-savings">-$60.00</span>
+          </div>
+          <div class="visa-row">
+            <span class="visa-label">Cost after savings:</span>
+            <span class="visa-val visa-final-price js-visa-cost-after">$91.93</span>
+          </div>
+        </div>
+        <button class="visa-learn-more-btn" type="button">Learn more</button>
+      </div>
+    </section>
+
+    <!-- Two-Column Cart Grid Layout -->
+    <div class="cart-layout-grid">
+      <!-- Left Column: Shopping Cart Container -->
+      <div class="cart-items-column">
+        <div class="shopping-cart-card">
+          <div class="cart-card-header">
+            <h1 class="cart-page-title">Shopping Cart</h1>
+            <span class="cart-price-col-header">Price</span>
+          </div>
+
+          <!-- Dynamic List of Cart Items -->
+          <div class="cart-items-list js-cart-items-list">
+            <!-- Populated dynamically by scripts/checkout.js -->
+          </div>
+
+          <!-- Subtotal at bottom of cart card -->
+          <div class="cart-card-subtotal-footer js-cart-card-subtotal">
+            <!-- Populated dynamically by scripts/checkout.js -->
+          </div>
+        </div>
+
+        <!-- Disclaimer paragraph -->
+        <p class="cart-disclaimer-text">
+          The price and availability of items at Amazon.com are subject to change. The Cart is a temporary place to store a list of your items and reflects each item's most recent price. Do you have a gift card or promotional code? We'll ask you to enter your claim code when it's time to pay.
+        </p>
+      </div>
+
+      <!-- Right Column: Subtotal Card & Sidebar Recommendations -->
+      <aside class="cart-sidebar-column">
+        <!-- Subtotal / Checkout Action Card -->
+        <div class="subtotal-action-card">
+          <div class="shipping-qualify-banner">
+            <svg class="shipping-check-icon" viewBox="0 0 24 24" width="20" height="20">
+              <circle cx="12" cy="12" r="10" fill="#067D62"/>
+              <path d="M8.5 12.5l2.5 2.5 5-5" stroke="#ffffff" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <div class="shipping-qualify-text">
+              <span class="qualify-green">Your order qualifies for FREE Shipping.</span> Choose this option at checkout. <a href="#" class="shipping-details-link">See details</a>
+            </div>
+          </div>
+
+          <div class="subtotal-amount-line js-subtotal-amount-line">
+            <!-- Populated dynamically -->
+          </div>
+
+          <label class="gift-order-checkbox">
+            <input type="checkbox" class="gift-input">
+            <span>This order contains a gift</span>
+          </label>
+
+          <button class="proceed-checkout-btn js-proceed-checkout" type="button">
+            Proceed to checkout
+          </button>
+        </div>
+
+        <!-- Customers who bought items in your cart also bought -->
+        <div class="sidebar-recommendations-card">
+          <h3 class="sidebar-rec-title">Customers who bought items in your cart also bought</h3>
+          <div class="sidebar-rec-list js-sidebar-rec-list">
+            <!-- 8 dynamic items rendered by scripts/checkout.js -->
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <!-- Bottom Carousel Section: Customers who shopped for ... also shopped for: -->
+    <section class="carousel-recommendations-section">
+      <div class="carousel-rec-header">
+        <h2 class="carousel-rec-title js-carousel-rec-title">Customers who shopped for items in your cart also shopped for:</h2>
+        <div class="carousel-pagination">Page <span class="js-carousel-page-num">1</span> of 3</div>
+      </div>
+
+      <div class="carousel-slider-container">
+        <button class="carousel-nav-btn carousel-prev-btn js-carousel-prev" aria-label="Previous">&#8249;</button>
+        <div class="carousel-products-track js-carousel-track">
+          <!-- 6 items rendered by scripts/checkout.js -->
+        </div>
+        <button class="carousel-nav-btn carousel-next-btn js-carousel-next" aria-label="Next">&#8250;</button>
+      </div>
+    </section>
+
+    <!-- Personalized Recommendations Section -->
+    <section class="personalized-recs-bar">
+      <div class="personalized-recs-inner">
+        <div class="personalized-recs-heading">See personalized recommendations</div>
+        <a href="#" class="personalized-signin-button">Sign in</a>
+        <div class="personalized-subtext">New customer? <a href="#">Start here.</a></div>
+      </div>
+    </section>
+  </main>
+
+  <script type="module" src="scripts/checkout.js"></script>
+  <!-- ==========================================
+       AUTHENTIC AMAZON FOOTER (SECTIONS 1 & 2)
+       ========================================== -->
+  <footer class="navFooter" id="navFooter">
+    <!-- Back to top button -->
+    <a href="#top" id="navBackToTop" class="navFooterBackToTop" aria-label="Back to top">
+      <span class="navFooterBackToTopText">Back to top</span>
+    </a>
+
+    <!-- SECTION 1: Main 4-column directory (#232F3E) -->
+    <div class="navFooterVerticalColumn navFooterDirectory">
+      <div class="navFooterVerticalRow">
+        <!-- Col 1: Get to Know Us -->
+        <div class="navFooterCol">
+          <div class="navFooterColHead">Get to Know Us</div>
+          <ul>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Amazon Newsletter</a></li>
+            <li><a href="#">About Amazon</a></li>
+            <li><a href="#">Accessibility</a></li>
+            <li><a href="#">Sustainability</a></li>
+            <li><a href="#">Press Center</a></li>
+            <li><a href="#">Investor Relations</a></li>
+            <li><a href="#">Amazon Devices</a></li>
+            <li><a href="#">Amazon Science</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 2: Make Money with Us -->
+        <div class="navFooterCol">
+          <div class="navFooterColHead">Make Money with Us</div>
+          <ul>
+            <li><a href="#">Sell on Amazon</a></li>
+            <li><a href="#">Sell apps on Amazon</a></li>
+            <li><a href="#">Supply to Amazon</a></li>
+            <li><a href="#">Protect &amp; Build Your Brand</a></li>
+            <li><a href="#">Become an Affiliate</a></li>
+            <li><a href="#">Become a Delivery Driver</a></li>
+            <li><a href="#">Start a Package Delivery Business</a></li>
+            <li><a href="#">Advertise Your Products</a></li>
+            <li><a href="#">Self-Publish with Us</a></li>
+            <li><a href="#">Become an Amazon Hub Partner</a></li>
+            <li class="navFooterColSpecial"><a href="#">&#8250; See More Ways to Make Money</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Amazon Payment Products -->
+        <div class="navFooterCol">
+          <div class="navFooterColHead">Amazon Payment Products</div>
+          <ul>
+            <li><a href="#">Amazon Visa</a></li>
+            <li><a href="#">Amazon Store Card</a></li>
+            <li><a href="#">Amazon Secured Card</a></li>
+            <li><a href="#">Amazon Business Card</a></li>
+            <li><a href="#">Shop with Points</a></li>
+            <li><a href="#">Credit Card Marketplace</a></li>
+            <li><a href="#">Reload Your Balance</a></li>
+            <li><a href="#">Gift Cards</a></li>
+            <li><a href="#">Amazon Currency Converter</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Let Us Help You -->
+        <div class="navFooterCol">
+          <div class="navFooterColHead">Let Us Help You</div>
+          <ul>
+            <li><a href="#">Your Account</a></li>
+            <li><a href="#">Your Orders</a></li>
+            <li><a href="#">Shipping Rates &amp; Policies</a></li>
+            <li><a href="#">Amazon Prime</a></li>
+            <li><a href="#">Returns &amp; Replacements</a></li>
+            <li><a href="#">Manage Your Content and Devices</a></li>
+            <li><a href="#">Recalls and Product Safety Alerts</a></li>
+            <li><a href="#">Registry &amp; Gift List</a></li>
+            <li><a href="#">Help</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Divider & Sub-bar: Logo + Language / Country picker -->
+    <div class="navFooterLine">
+      <div class="navFooterSubBar">
+        <a href="amazon.html" class="navFooterLogoLink" aria-label="Amazon Home">
+          <img class="navFooterLogo" src="images/amazon-logo-white.png" alt="Amazon Logo">
+        </a>
+        <div class="navFooterSelectGroup">
+          <button class="navFooterSelectBtn" type="button" aria-label="Choose a language">
+            <svg class="navFooterGlobe" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.6">
+              <circle cx="12" cy="12" r="10"></circle>
+              <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+            </svg>
+            <span>English</span>
+            <span class="navFooterArrows">
+              <svg viewBox="0 0 10 14" width="8" height="11" fill="none" stroke="#999" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M2 5L5 2L8 5"/>
+                <path d="M2 9L5 12L8 9"/>
+              </svg>
+            </span>
+          </button>
+
+          <button class="navFooterSelectBtn" type="button" aria-label="Choose a country/region">
+            <span class="navFooterFlag">
+              <svg width="18" height="12" viewBox="0 0 19 10">
+                <rect width="19" height="10" fill="#b22234"/>
+                <line y1="1" x2="19" y2="1" stroke="#fff" stroke-width="1"/>
+                <line y1="3" x2="19" y2="3" stroke="#fff" stroke-width="1"/>
+                <line y1="5" x2="19" y2="5" stroke="#fff" stroke-width="1"/>
+                <line y1="7" x2="19" y2="7" stroke="#fff" stroke-width="1"/>
+                <line y1="9" x2="19" y2="9" stroke="#fff" stroke-width="1"/>
+                <rect width="7.6" height="5.4" fill="#3c3b6e"/>
+              </svg>
+            </span>
+            <span>United States</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 2: Deep Dark Micro-services Directory (#131A22) -->
+    <div class="navFooterServices">
+      <div class="navFooterServicesGrid">
+        <!-- Row 1 -->
+        <a href="#" class="navFooterServiceItem">
+          <span class="navFooterServiceTitle">Amazon Music</span>
+          <span class="navFooterServiceDesc">Stream millions<br>of songs</span>
+        </a>
+        <a href="#" class="navFooterServiceItem">
+          <span class="navFooterServiceTitle">Amazon Ads</span>
+          <span class="navFooterServiceDesc">Reach customers<br>wherever they<br>spend their time</span>
+        </a>
+        <a href="#" class="navFooterServiceItem">
+          <span class="navFooterServiceTitle">6pm</span>
+          <span class="navFooterServiceDesc">Score deals<br>on fashion brands</span>
+        </a>
+        <a href="#" class="navFooterServiceItem">
+          <span class="navFooterServiceTitle">AbeBooks</span>
+          <span class="navFooterServiceDesc">Books, art<br>&amp; collectibles</span>
+        </a>
+        <a href="#" class="navFooterServiceItem">
+          <span class="navFooterServiceTitle">ACX</span>
+          <span class="navFooterServiceDesc">Audiobook<br>Publishing<br>Made Easy</span>
+        </a>
+        <a href="#" class="navFooterServiceItem">
+          <span class="navFooterServiceTitle">Sell on Amazon</span>
+          <span class="navFooterServiceDesc">Start a Selling<br>Account</span>
+        </a>
+        <a href="#" class="navFooterServiceItem">
+          <span class="navFooterServiceTitle">Veeqo</span>
+          <span class="navFooterServiceDesc">Shipping Software<br>Inventory<br>Management</span>
+        </a>
+
+        <!-- Row 2 -->
+        <a href="#" class="navFooterServiceItem">
+          <span class="navFooterServiceTitle">Amazon Business</span>
+          <span class="navFooterServiceDesc">Everything For<br>Your Business</span>
+        </a>
+        <a href="#" class="navFooterServiceItem">
+          <span class="navFooterServiceTitle">Amazon Fresh</span>
+          <span class="navFooterServiceDesc">Groceries &amp; More<br>Right To Your Door</span>
+        </a>
+        <a href="#" class="navFooterServiceItem">
+          <span class="navFooterServiceTitle">AmazonGlobal</span>
+          <span class="navFooterServiceDesc">Ship Orders<br>Internationally</span>
+        </a>
+        <a href="#" class="navFooterServiceItem">
+          <span class="navFooterServiceTitle">Home Services</span>
+          <span class="navFooterServiceDesc">Experienced Pros<br>Happiness<br>Guarantee</span>
+        </a>
+        <a href="#" class="navFooterServiceItem">
+          <span class="navFooterServiceTitle">Amazon Web Services</span>
+          <span class="navFooterServiceDesc">Scalable Cloud<br>Computing<br>Services</span>
+        </a>
+        <a href="#" class="navFooterServiceItem">
+          <span class="navFooterServiceTitle">Audible</span>
+          <span class="navFooterServiceDesc">Listen to Books &amp;<br>Original<br>Audio<br>Performances</span>
+        </a>
+        <a href="#" class="navFooterServiceItem">
+          <span class="navFooterServiceTitle">Box Office Mojo</span>
+          <span class="navFooterServiceDesc">Find Movie<br>Box Office Data</span>
+        </a>
+
+        <!-- Row 3 -->
+        <a href="#" class="navFooterServiceItem">
+          <span class="navFooterServiceTitle">Goodreads</span>
+          <span class="navFooterServiceDesc">Book reviews<br>&amp; recommendations</span>
+        </a>
+        <a href="#" class="navFooterServiceItem">
+          <span class="navFooterServiceTitle">IMDb</span>
+          <span class="navFooterServiceDesc">Movies, TV<br>&amp; Celebrities</span>
+        </a>
+        <a href="#" class="navFooterServiceItem">
+          <span class="navFooterServiceTitle">IMDbPro</span>
+          <span class="navFooterServiceDesc">Get Info<br>Entertainment<br>Professionals Need</span>
+        </a>
+        <a href="#" class="navFooterServiceItem">
+          <span class="navFooterServiceTitle">Kindle Direct Publishing</span>
+          <span class="navFooterServiceDesc">Indie Digital &amp;<br>Print Publishing<br>Made Easy</span>
+        </a>
+        <a href="#" class="navFooterServiceItem">
+          <span class="navFooterServiceTitle">Amazon Photos</span>
+          <span class="navFooterServiceDesc">Unlimited Photo<br>Storage<br>Free With Prime</span>
+        </a>
+        <a href="#" class="navFooterServiceItem">
+          <span class="navFooterServiceTitle">Prime Video Direct</span>
+          <span class="navFooterServiceDesc">Video Distribution<br>Made Easy</span>
+        </a>
+        <a href="#" class="navFooterServiceItem">
+          <span class="navFooterServiceTitle">Shopbop</span>
+          <span class="navFooterServiceDesc">Designer<br>Fashion Brands</span>
+        </a>
+
+        <!-- Row 4 -->
+        <a href="#" class="navFooterServiceItem">
+          <span class="navFooterServiceTitle">Amazon Resale</span>
+          <span class="navFooterServiceDesc">Great Deals on<br>Quality Used<br>Products</span>
+        </a>
+        <a href="#" class="navFooterServiceItem">
+          <span class="navFooterServiceTitle">Whole Foods Market</span>
+          <span class="navFooterServiceDesc">America's<br>Healthiest<br>Grocery Store</span>
+        </a>
+        <a href="#" class="navFooterServiceItem">
+          <span class="navFooterServiceTitle">Woot!</span>
+          <span class="navFooterServiceDesc">Deals and<br>Shenanigans</span>
+        </a>
+        <a href="#" class="navFooterServiceItem">
+          <span class="navFooterServiceTitle">Zappos</span>
+          <span class="navFooterServiceDesc">Shoes &amp;<br>Clothing</span>
+        </a>
+        <a href="#" class="navFooterServiceItem">
+          <span class="navFooterServiceTitle">Ring</span>
+          <span class="navFooterServiceDesc">Smart Home<br>Security Systems</span>
+        </a>
+        <a href="#" class="navFooterServiceItem">
+          <span class="navFooterServiceTitle">eero WiFi</span>
+          <span class="navFooterServiceDesc">Stream 4K Video<br>in Every Room</span>
+        </a>
+        <a href="#" class="navFooterServiceItem">
+          <span class="navFooterServiceTitle">Blink</span>
+          <span class="navFooterServiceDesc">Smart Security<br>for Every Home</span>
+        </a>
+
+        <!-- Row 5 (Columns 3, 4, 5) -->
+        <a href="#" class="navFooterServiceItem navFooterColPos3">
+          <span class="navFooterServiceTitle">Neighbors App</span>
+          <span class="navFooterServiceDesc">Real-Time Crime<br>&amp; Safety Alerts</span>
+        </a>
+        <a href="#" class="navFooterServiceItem navFooterColPos4">
+          <span class="navFooterServiceTitle">PillPack</span>
+          <span class="navFooterServiceDesc">Pharmacy<br>Simplified</span>
+        </a>
+        <a href="#" class="navFooterServiceItem navFooterColPos5">
+          <span class="navFooterServiceTitle">Amazon Renewed</span>
+          <span class="navFooterServiceDesc">Refurbished tech<br>you can trust</span>
         </a>
       </div>
 
-      <div class="checkout-header-middle-section js-checkout-header-quantity">
-      </div>
-
-      <div class="checkout-header-right-section">
-        <img src="images/icons/checkout-lock-icon.png">
+      <!-- Legal / Copyright Footer -->
+      <div class="navFooterLegal">
+        <ul class="navFooterLegalLinks">
+          <li><a href="#">Conditions of Use</a></li>
+          <li><a href="#">Privacy Notice</a></li>
+          <li><a href="#">Consumer Health Data Privacy Disclosure</a></li>
+          <li>
+            <a href="#" class="navFooterPrivacyChoice">
+              <span>Your Ads Privacy Choices</span>
+              <svg class="navFooterPrivacyIcon" width="29" height="14" viewBox="0 0 29 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M7 1h15a6 6 0 0 1 0 12H7A6 6 0 0 1 7 1z" fill="#0073BB"/>
+                <path d="M7 2a5 5 0 0 0 0 10V2zm15 10a5 5 0 0 0 0-10v10z" fill="#0073BB"/>
+                <path d="M5.5 5.5l2 2 3.5-3.5" stroke="#fff" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M21 5l-3 3m0-3l3 3" stroke="#fff" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </li>
+        </ul>
+        <div class="navFooterCopyright">
+          &copy; 1996&ndash;2026, Amazon.com, Inc. or its affiliates
+        </div>
       </div>
     </div>
-  </div>
+  </footer>
+  <script>
+    // Update cart quantity in header dynamically
+    try {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      let totalQty = 0;
+      cart.forEach(item => { totalQty += Number(item.quantity) || 0; });
+      document.querySelectorAll('.js-cart-quantity').forEach(el => {
+        el.textContent = totalQty;
+      });
+    } catch(e) {}
 
-  <div class="main">
-    <div class="page-title">Review your order</div>
-
-    <div class="checkout-grid">
-      <div class="order-summary js-order-summary">
-      </div>
-
-      <div class="payment-summary js-payment-summary">
-      </div>
-    </div>
-  </div>
-
-  <script type="module" src="scripts/checkout.js"></script>
+    // Back to top smooth scroll
+    const backToTopBtn = document.getElementById('navBackToTop');
+    if (backToTopBtn) {
+      backToTopBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
+  </script>
+  <script type="module" src="scripts/shared/amazon-sidebar.js"></script>
 </body>
 
 </html>

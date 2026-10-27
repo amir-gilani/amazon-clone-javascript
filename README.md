@@ -6,8 +6,7 @@ This project focuses on practicing JavaScript fundamentals and building an inter
 
 ## 🚀 Live Demo & Preview
 
-* **Live Demo:** [Click here to view live demo](https://amir-gilani.github.io/amazon-clone-javascript/) *(Replace with your GitHub Pages / deployment link)*
-* **Preview GIF / Video:** *(Optional: Add link or embed GIF demo here)*
+
 
 ### 📸 Screenshots
 

@@ -9,11 +9,15 @@ async function initTrackingPage() {
   updateCartQuantity();
   renderTrackingDetails();
 
-  try {
-    await loadProductsFetch();
-    renderTrackingDetails();
-  } catch (e) {
-    console.log("Using local catalog for tracking");
+  const url = new URL(window.location.href);
+  const productId = url.searchParams.get("productId");
+  if (productId && !getProduct(productId)) {
+    try {
+      await loadProductsFetch();
+      renderTrackingDetails();
+    } catch (e) {
+      console.log("Using local catalog for tracking");
+    }
   }
 }
 
@@ -133,3 +137,4 @@ function renderTrackingDetails() {
     </div>
   `;
 }
+

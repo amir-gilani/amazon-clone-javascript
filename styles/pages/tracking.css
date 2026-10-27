@@ -1,7 +1,9 @@
 .main {
   max-width: 850px;
+  min-height: calc(100vh - 120px);
+  box-sizing: border-box;
   margin-top: 115px;
-  margin-bottom: 100px;
+  margin-bottom: 80px;
   padding-left: 30px;
   padding-right: 30px;
 
@@ -29,8 +31,10 @@
 }
 
 .product-image {
-  max-width: 150px;
-  max-height: 150px;
+  width: 150px;
+  height: 150px;
+  object-fit: contain;
+  display: block;
   margin-top: 25px;
   margin-bottom: 50px;
 }
@@ -81,6 +85,8 @@
 }
 
 .order-tracking {
+  min-height: 520px;
+  box-sizing: border-box;
   background-color: #ffffff;
   border: 1px solid rgb(213, 217, 217);
   border-radius: 8px;

@@ -3,11 +3,6 @@
 // Only contains orders that the user has actually placed. Starts empty.
 // ═══════════════════════════════════════════════════════════════════════════════════════
 
-// One-time reset to clear previous mock/dummy orders
-if (typeof localStorage !== "undefined" && !localStorage.getItem("orders_fresh_reset_v4")) {
-  localStorage.setItem("orders", JSON.stringify([]));
-  localStorage.setItem("orders_fresh_reset_v4", "true");
-}
 
 export let orders = loadOrders();
 

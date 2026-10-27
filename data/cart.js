@@ -4,12 +4,6 @@
 // ═══════════════════════════════════════════════════════════════════════════════════════
 export let cart = [];
 
-// One-time reset to fulfill user request to start fresh from 0 items
-if (typeof localStorage !== "undefined" && !localStorage.getItem("cart_fresh_reset_v4")) {
-  localStorage.setItem("cart", JSON.stringify([]));
-  localStorage.setItem("cart_fresh_reset_v4", "true");
-}
-
 loadFromStorage();
 
 export function loadFromStorage() {
@@ -21,6 +15,10 @@ export function loadFromStorage() {
       cart = JSON.parse(stored);
       if (!Array.isArray(cart)) {
         cart = [];
+      } else {
+        cart.forEach((item) => {
+          item.quantity = Number(item.quantity) || 1;
+        });
       }
     } catch (e) {
       cart = [];
@@ -40,14 +38,15 @@ function saveToStorage() {
 
 // ADD ITEM TO CART
 export function addToCart(productId, quantity = 1) {
+  const qty = Number(quantity) || 1;
   let matchingItem = cart.find((cartItem) => cartItem.productId === productId);
 
   if (matchingItem) {
-    matchingItem.quantity += quantity;
+    matchingItem.quantity = (Number(matchingItem.quantity) || 0) + qty;
   } else {
     cart.push({
       productId,
-      quantity,
+      quantity: qty,
       deliveryOptionId: "1",
     });
   }
@@ -106,7 +105,7 @@ export function calculateCartQuantity() {
 export function updateQuantity(productId, newQuantity) {
   const matchingItem = cart.find((cartItem) => cartItem.productId === productId);
   if (matchingItem) {
-    matchingItem.quantity = newQuantity;
+    matchingItem.quantity = Number(newQuantity) || 1;
     saveToStorage();
   }
 }

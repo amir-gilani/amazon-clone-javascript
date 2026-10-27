@@ -86,11 +86,12 @@ function renderCartPage() {
 
   // Calculate totals and find first product
   cart.forEach((cartItem) => {
-    totalItemCount += cartItem.quantity;
+    const qty = Number(cartItem.quantity) || 1;
+    totalItemCount += qty;
     const product = getProduct(cartItem.productId);
     if (product) {
       if (!firstCartProduct) firstCartProduct = product;
-      totalCents += product.priceCents * cartItem.quantity;
+      totalCents += product.priceCents * qty;
     }
   });
 
@@ -216,8 +217,9 @@ function attachCartItemListeners() {
       const productId = btn.dataset.productId;
       const matchingItem = cart.find((item) => item.productId === productId);
       if (matchingItem) {
-        if (matchingItem.quantity > 1) {
-          matchingItem.quantity -= 1;
+        const curQty = Number(matchingItem.quantity) || 1;
+        if (curQty > 1) {
+          matchingItem.quantity = curQty - 1;
           saveCartStorage();
         } else {
           removeFromCart(productId);
@@ -233,7 +235,7 @@ function attachCartItemListeners() {
       const productId = btn.dataset.productId;
       const matchingItem = cart.find((item) => item.productId === productId);
       if (matchingItem) {
-        matchingItem.quantity += 1;
+        matchingItem.quantity = (Number(matchingItem.quantity) || 0) + 1;
         saveCartStorage();
         renderCartPage();
       }
@@ -378,7 +380,7 @@ function setupGlobalEvents() {
         totalCostCents: calculateTotalCents(),
         products: cart.map((item) => ({
           productId: item.productId,
-          quantity: item.quantity,
+          quantity: Number(item.quantity) || 1,
           estimatedDeliveryTime: new Date(Date.now() + 5 * 86400000).toISOString()
         }))
       };
@@ -425,7 +427,7 @@ function calculateTotalCents() {
   cart.forEach((item) => {
     const product = getProduct(item.productId);
     if (product) {
-      total += product.priceCents * item.quantity;
+      total += product.priceCents * (Number(item.quantity) || 1);
     }
   });
   return total;

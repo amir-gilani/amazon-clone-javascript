@@ -123,9 +123,9 @@ export function renderPaymentSummary() {
 
       if (order) {
         addOrder(order);
-        resetCart();
       }
 
       window.location.href = 'orders.html';
     });
 }
+

@@ -3,7 +3,6 @@
 // Only contains orders that the user has actually placed. Starts empty.
 // ═══════════════════════════════════════════════════════════════════════════════════════
 
-
 export let orders = loadOrders();
 
 export function loadOrders() {
@@ -33,8 +32,12 @@ export function clearOrders() {
   saveToStorage();
 }
 
-function saveToStorage() {
+export function saveOrders() {
   if (typeof localStorage !== 'undefined') {
     localStorage.setItem('orders', JSON.stringify(orders));
   }
+}
+
+function saveToStorage() {
+  saveOrders();
 }

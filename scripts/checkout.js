@@ -386,7 +386,6 @@ function setupGlobalEvents() {
       };
 
       addOrder(newOrder);
-      resetCart();
 
       setTimeout(() => {
         window.location.href = "orders.html";
@@ -435,3 +434,4 @@ function calculateTotalCents() {
 
 // Start application
 initCheckoutPage();
+

@@ -8,7 +8,7 @@ This project focuses on practicing JavaScript fundamentals and building an inter
 
 
 
-## 📚 Preview
+## 👀 Preview
 
 | Home Page | Shopping Cart & Checkout |
 | :---: | :---: |

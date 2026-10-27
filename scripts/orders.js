@@ -172,8 +172,9 @@ function attachBuyAgainEvents() {
 
       // 3. Redirect back to products page so user can repeat the purchasing process
       setTimeout(() => {
-        window.location.href = "products.html";
+        window.location.href = "checkout.html";
       }, 250);
     });
   });
 }
+

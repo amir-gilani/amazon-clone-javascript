@@ -224,36 +224,3 @@
     padding: 12px;
   }
 }
-
-
-.cancel-order-button {
-  width: 100%;
-  font-size: 14px;
-  padding: 8px;
-  margin-top: 10px;
-  border-radius: 8px;
-  background-color: #ffffff;
-  border: 1px solid #d5d9d9;
-  color: #0f1111;
-  cursor: pointer;
-  box-shadow: 0 2px 5px rgba(213, 217, 217, 0.5);
-  transition: background-color 0.15s, border-color 0.15s;
-}
-
-.cancel-order-button:hover {
-  background-color: #f7fafa;
-  border-color: #d5d9d9;
-}
-
-@media (max-width: 800px) {
-  .cancel-order-button {
-    width: 140px;
-  }
-}
-
-@media (max-width: 450px) {
-  .cancel-order-button {
-    width: 100%;
-    padding: 12px;
-  }
-}

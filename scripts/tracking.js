@@ -7,14 +7,14 @@ initTrackingPage();
 
 async function initTrackingPage() {
   updateCartQuantity();
+  renderTrackingDetails();
 
   try {
     await loadProductsFetch();
+    renderTrackingDetails();
   } catch (e) {
     console.log("Using local catalog for tracking");
   }
-
-  renderTrackingDetails();
 }
 
 function updateCartQuantity() {
@@ -76,8 +76,8 @@ function renderTrackingDetails() {
 
   if (!product) {
     product = {
-      name: "Amazon Order Item",
-      image: "images/products/athletic-cotton-socks-6-pairs.jpg",
+      name: "Purchased Order Item",
+      image: "images/icons/cart-icon.png",
     };
   }
 

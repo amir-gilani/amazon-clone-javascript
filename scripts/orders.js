@@ -8,15 +8,15 @@ initOrdersPage();
 
 async function initOrdersPage() {
   updateCartQuantity();
+  renderOrdersGrid();
 
-  // Load products so getProduct() returns names and images
+  // Load products so getProduct() returns names and images if fetched
   try {
     await loadProductsFetch();
+    renderOrdersGrid();
   } catch (e) {
     console.log("Using local products catalog for orders");
   }
-
-  renderOrdersGrid();
 }
 
 function updateCartQuantity() {
@@ -110,8 +110,8 @@ function renderOrderProductsHTML(order) {
     if (!product) {
       product = {
         id: orderProduct.productId,
-        name: "Amazon Product",
-        image: "images/products/athletic-cotton-socks-6-pairs.jpg"
+        name: "Purchased Product",
+        image: "images/icons/cart-icon.png"
       };
     }
 

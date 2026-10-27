@@ -8,6 +8,7 @@ import {
   removeFromCart,
   addToCart,
   calculateCartQuantity,
+  resetCart,
 } from "../data/cart.js";
 import { loadProductsFetch, getProduct, products } from "../data/products.js";
 import formatCurrency from "./utils/money.js";
@@ -383,8 +384,7 @@ function setupGlobalEvents() {
       };
 
       addOrder(newOrder);
-      cart.length = 0;
-      saveCartStorage();
+      resetCart();
 
       setTimeout(() => {
         window.location.href = "orders.html";

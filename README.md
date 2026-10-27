@@ -4,11 +4,11 @@ A frontend Amazon clone built with **HTML, CSS, and JavaScript** while following
 
 This project focuses on practicing JavaScript fundamentals and building an interactive e-commerce website from scratch.
 
-## 🚀 Live Demo & Preview
+## 🚀 Live Demo 
 
 
 
-### 📸 Screenshots
+## Preview
 
 | Home Page | Shopping Cart & Checkout |
 | :---: | :---: |

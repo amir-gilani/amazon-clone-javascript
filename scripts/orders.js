@@ -1,7 +1,7 @@
-import { orders } from "../data/order.js";
+import { orders, removeProductFromOrders } from "../data/order.js";
 import { getProduct, loadProductsFetch, rawProductsCatalog } from "../data/products.js";
 import formatCurrency from "./utils/money.js";
-import { addToCart, calculateCartQuantity } from "../data/cart.js";
+import { addToCart, calculateCartQuantity, removeFromCart } from "../data/cart.js";
 
 // Initialize orders page
 initOrdersPage();
@@ -94,6 +94,7 @@ function renderOrdersGrid() {
 
   ordersGrid.innerHTML = html;
   attachBuyAgainEvents();
+  attachCancelOrderEvents();
 }
 
 function renderOrderProductsHTML(order) {
@@ -144,6 +145,9 @@ function renderOrderProductsHTML(order) {
             Track package
           </button>
         </a>
+        <button class="cancel-order-button js-cancel-order" data-product-id="${product.id}" data-order-id="${order.id}">
+          Cancel item
+        </button>
       </div>
     `;
   });
@@ -161,7 +165,7 @@ function attachBuyAgainEvents() {
       const msg = btn.querySelector(".buy-again-message");
       if (msg) {
         const orig = msg.textContent;
-        msg.textContent = "✓ Added";
+        msg.textContent = "✓ Added to Cart";
         btn.style.backgroundColor = "#2ecc71";
         btn.style.borderColor = "#27ae60";
         btn.style.color = "#ffffff";
@@ -173,6 +177,18 @@ function attachBuyAgainEvents() {
           btn.style.color = "";
         }, 1500);
       }
+    });
+  });
+}
+
+function attachCancelOrderEvents() {
+  document.querySelectorAll(".js-cancel-order").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const { productId } = btn.dataset;
+      removeProductFromOrders(productId);
+      removeFromCart(productId);
+      updateCartQuantity();
+      renderOrdersGrid();
     });
   });
 }

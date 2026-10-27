@@ -12,7 +12,7 @@ import {
 } from "../data/cart.js";
 import { loadProductsFetch, getProduct, products } from "../data/products.js";
 import formatCurrency from "./utils/money.js";
-import { addOrder } from "../data/order.js";
+import { addOrder, removeProductFromOrders } from "../data/order.js";
 import { renderCheckoutHeader } from "./checkout/checkoutHeader.js";
 
 // Sidebar recommendations using existing catalog products
@@ -221,6 +221,7 @@ function attachCartItemListeners() {
           saveCartStorage();
         } else {
           removeFromCart(productId);
+          removeProductFromOrders(productId);
         }
         renderCartPage();
       }
@@ -245,6 +246,7 @@ function attachCartItemListeners() {
     btn.addEventListener("click", () => {
       const productId = btn.dataset.productId;
       removeFromCart(productId);
+      removeProductFromOrders(productId);
       renderCartPage();
     });
   });

@@ -4,24 +4,41 @@ A frontend Amazon clone built with **HTML, CSS, and JavaScript** while following
 
 This project focuses on practicing JavaScript fundamentals and building an interactive e-commerce website from scratch.
 
+## 🚀 Live Demo & Preview
+
+* **Live Demo:** [Click here to view live demo](https://amir-gilani.github.io/amazon-clone-javascript/) *(Replace with your GitHub Pages / deployment link)*
+* **Preview GIF / Video:** *(Optional: Add link or embed GIF demo here)*
+
+### 📸 Screenshots
+
+| Home Page | Shopping Cart & Checkout |
+| :---: | :---: |
+| ![Home Page](images/screenshots/home.png) | ![Cart & Checkout](images/screenshots/checkout.png) |
+
+| Returns & Orders | Order Tracking |
+| :---: | :---: |
+| ![Orders Page](images/screenshots/orders.png) | ![Tracking Page](images/screenshots/tracking.png) |
+
+> 💡 **Tip:** Create a folder named `images/screenshots/` and drop your images there (or upload them directly to GitHub issues/assets and paste the URL).
+
 ## ✨ Features
 
-* Product listing
-* Add products to cart
-* Update product quantities
-* Remove products from cart
-* Checkout page
-* Order tracking
-* Interactive shopping cart
-* Dynamic product rendering
+* Product listing with dynamic product rendering
+* Interactive shopping cart (Add, update quantity, remove items)
 * Persistent cart data using Local Storage
+* Interactive checkout page with order summary calculation
+* Returns & Orders history page
+* Package tracking page with delivery progress bar
+* Side navigation drawer ("All" hamburger menu) with categories
+* Smart scroll header (auto-hide on scroll down, reveal on scroll up)
+* Complete Amazon global footer across all pages
 
 ## 🛠️ Technologies
 
-* **HTML5** – Page structure
-* **CSS3** – Styling and layout
-* **JavaScript** – Functionality and interactivity
-* **Git & GitHub** – Version control
+* **HTML5** – Page structure & semantic elements
+* **CSS3** – Styling, responsive layout & Flexbox/Grid
+* **JavaScript (ES6+)** – Modules, DOM manipulation, async/await & local storage
+* **Git & GitHub** – Version control & collaboration
 
 ## 📚 What I Learned
 
@@ -31,9 +48,9 @@ During this project, I practiced and improved my understanding of:
 * Variables, functions, arrays, and objects
 * DOM manipulation
 * Event listeners
-* Working with JSON
-* JavaScript modules
-* Local Storage
+* Working with JSON & APIs
+* JavaScript modules (import/export)
+* Local Storage persistence
 * Dynamic HTML rendering
 * Managing shopping cart data
 * Creating reusable functions

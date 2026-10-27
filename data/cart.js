@@ -134,6 +134,11 @@ export function removeFromCart(productId) {
 }
 
 // CALCULATE TOTAL CART QUANTITY
+export function resetCart() {
+  cart = [];
+  saveToStorage();
+}
+
 export function calculateCartQuantity() {
   let cartQuantity = 0;
   cart.forEach((cartItem) => {

@@ -383,10 +383,12 @@ function setupGlobalEvents() {
       };
 
       addOrder(newOrder);
+      cart.length = 0;
+      saveCartStorage();
 
       setTimeout(() => {
         window.location.href = "orders.html";
-      }, 800);
+      }, 500);
     });
   }
 

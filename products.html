@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Amazon.com: Online Shopping - All Products</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- CSS files -->
+  <link rel="stylesheet" href="styles/shared/general.css">
+  <link rel="stylesheet" href="styles/shared/amazon-header.css">
+  <link rel="stylesheet" href="styles/shared/amazon-footer.css">
+  <link rel="stylesheet" href="styles/pages/products.css">
+</head>
+
+<body>
+  <!-- ═══════════════════════════════════════════════════════════════
+       1. AUTHENTIC AMAZON SOLID HEADER (#131921)
+       ═══════════════════════════════════════════════════════════════ -->
+  <header class="amazon-header">
+    <!-- Left Section: Logo & Deliver To -->
+    <div class="amazon-header-left-section">
+      <a href="amazon.html" class="nav-link nav-logo-link">
+        <img class="amazon-logo" src="images/amazon-logo-white.png" alt="Amazon Logo">
+        <img class="amazon-mobile-logo" src="images/amazon-mobile-logo-white.png" alt="Amazon Mobile Logo">
+      </a>
+
+      <div class="nav-link nav-location">
+        <svg class="nav-location-icon" viewBox="0 0 24 24">
+          <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+        </svg>
+        <div class="nav-location-text">
+          <span class="nav-line-1">Delivering to Waterbury 06708</span>
+          <span class="nav-line-2">Update location</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Middle Section: Search with Compact 'All' Dropdown -->
+    <div class="amazon-header-middle-section">
+      <select class="nav-search-dropdown js-search-category" aria-label="Search in">
+        <option value="all" selected>All</option>
+        <option value="deals">Deals</option>
+        <option value="electronics">Electronics</option>
+        <option value="clothing">Fashion</option>
+        <option value="home">Home</option>
+        <option value="beauty">Beauty</option>
+        <option value="books">Books</option>
+      </select>
+
+      <input class="search-bar js-search-bar" type="text" placeholder="Search Amazon">
+
+      <button class="search-button js-search-button" aria-label="Search">
+        <img class="search-icon" src="images/icons/search-icon.png" alt="Search">
+      </button>
+    </div>
+
+    <!-- Right Section: Language, Account, Orders, Cart -->
+    <div class="amazon-header-right-section">
+      <div class="nav-link nav-language">
+        <!-- Authentic US Flag SVG -->
+        <svg class="nav-flag-svg" viewBox="0 0 24 16" width="22" height="15">
+          <rect width="24" height="16" fill="#b22234"/>
+          <path d="M0,1.23h24 M0,3.69h24 M0,6.15h24 M0,8.61h24 M0,11.07h24 M0,13.53h24" stroke="#ffffff" stroke-width="1.23"/>
+          <rect width="9.6" height="8.61" fill="#3c3b6e"/>
+          <g fill="#ffffff">
+            <circle cx="1.6" cy="1.4" r="0.45"/>
+            <circle cx="3.2" cy="1.4" r="0.45"/>
+            <circle cx="4.8" cy="1.4" r="0.45"/>
+            <circle cx="6.4" cy="1.4" r="0.45"/>
+            <circle cx="8.0" cy="1.4" r="0.45"/>
+            <circle cx="2.4" cy="2.8" r="0.45"/>
+            <circle cx="4.0" cy="2.8" r="0.45"/>
+            <circle cx="5.6" cy="2.8" r="0.45"/>
+            <circle cx="7.2" cy="2.8" r="0.45"/>
+            <circle cx="1.6" cy="4.2" r="0.45"/>
+            <circle cx="3.2" cy="4.2" r="0.45"/>
+            <circle cx="4.8" cy="4.2" r="0.45"/>
+            <circle cx="6.4" cy="4.2" r="0.45"/>
+            <circle cx="8.0" cy="4.2" r="0.45"/>
+            <circle cx="2.4" cy="5.6" r="0.45"/>
+            <circle cx="4.0" cy="5.6" r="0.45"/>
+            <circle cx="5.6" cy="5.6" r="0.45"/>
+            <circle cx="7.2" cy="5.6" r="0.45"/>
+            <circle cx="1.6" cy="7.0" r="0.45"/>
+            <circle cx="3.2" cy="7.0" r="0.45"/>
+            <circle cx="4.8" cy="7.0" r="0.45"/>
+            <circle cx="6.4" cy="7.0" r="0.45"/>
+            <circle cx="8.0" cy="7.0" r="0.45"/>
+          </g>
+        </svg>
+        <span>EN</span>
+        <span class="nav-arrow">▼</span>
+      </div>
+
+      <a class="nav-link nav-account" href="#">
+        <span class="nav-line-1">Hello, sign in</span>
+        <span class="nav-line-2">Account & Lists <span class="nav-arrow">▼</span></span>
+      </a>
+
+      <a class="nav-link nav-orders" href="orders.html">
+        <span class="nav-line-1">Returns</span>
+        <span class="nav-line-2">& Orders</span>
+      </a>
+
+      <a class="nav-link cart-link" href="checkout.html">
+        <div class="cart-icon-wrapper">
+          <img class="cart-icon" src="images/icons/cart-icon.png" alt="Cart">
+          <div class="cart-quantity js-cart-quantity"></div>
+        </div>
+        <div class="cart-text">Cart</div>
+      </a>
+    </div>
+  </header>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       2. SUB-NAV BAR (#232f3e)
+       ═══════════════════════════════════════════════════════════════ -->
+  <nav class="amazon-subnav">
+    <a href="#" class="subnav-link subnav-link-all">
+      <div class="subnav-hamburger-icon">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      All
+    </a>
+    <a href="products.html" class="subnav-link">Today's Deals</a>
+    <a href="#" class="subnav-link">Customer Service</a>
+    <a href="#" class="subnav-link">Registry</a>
+    <a href="#" class="subnav-link">Gift Cards</a>
+    <a href="#" class="subnav-link">Sell</a>
+    <a href="amazon.html" class="subnav-link">Home Page</a>
+    <a href="#" class="subnav-link">Coupons</a>
+    <a href="#" class="subnav-link">Pharmacy</a>
+    <a href="#" class="subnav-link">Whole Foods</a>
+    <a href="#" class="subnav-link">Fashion</a>
+    <a href="#" class="subnav-link">New Releases</a>
+  </nav>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       3. MAIN BODY: ALL PRODUCTS RESULTS & GRID
+       ═══════════════════════════════════════════════════════════════ -->
+  <main class="products-page-main">
+    <!-- Results Header / Filter / Sort Bar -->
+    <div class="products-results-bar">
+      <div class="results-count-wrap js-results-count-wrap">
+        Showing <span class="results-count-bold">1–32</span> of <span class="results-count-bold">32</span> products
+      </div>
+
+      <div class="results-sort-wrap">
+        <label for="sort-select">Sort by:</label>
+        <select id="sort-select" class="sort-select js-sort-select">
+          <option value="featured" selected>Featured</option>
+          <option value="price-asc">Price: Low to High</option>
+          <option value="price-desc">Price: High to Low</option>
+          <option value="rating">Avg. Customer Review</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Dynamic Products Grid -->
+    <div class="products-grid js-products-grid">
+      <!-- Injected by scripts/products-page.js -->
+    </div>
+  </main>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       PERSONALIZED RECOMMENDATIONS BAR
+       ═══════════════════════════════════════════════════════════════ -->
+  <section class="personalized-recs-bar">
+    <div class="personalized-recs-inner">
+      <div class="personalized-recs-heading">See personalized recommendations</div>
+      <a href="#" class="personalized-signin-button">Sign in</a>
+      <div class="personalized-subtext">New customer? <a href="#">Start here.</a></div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       4. GLOBAL AMAZON FOOTER
+       ═══════════════════════════════════════════════════════════════ -->
+  <footer class="navFooter">
+    <!-- Back to top banner -->
+    <a href="#top" id="navBackToTop" aria-label="Back to top">
+      <div class="navFooterBackToTop">
+        <span class="navFooterBackToTopText">Back to top</span>
+      </div>
+    </a>
+
+    <!-- Main Directory (4 Columns) -->
+    <div class="navFooterVerticalColumn navFooterDirectory">
+      <div class="navFooterVerticalRow">
+        <div class="navFooterCol">
+          <div class="navFooterColHead">Get to Know Us</div>
+          <ul>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">About Amazon</a></li>
+            <li><a href="#">Investor Relations</a></li>
+            <li><a href="#">Amazon Devices</a></li>
+            <li><a href="#">Amazon Science</a></li>
+          </ul>
+        </div>
+
+        <div class="navFooterCol">
+          <div class="navFooterColHead">Make Money with Us</div>
+          <ul>
+            <li><a href="#">Sell products on Amazon</a></li>
+            <li><a href="#">Sell on Amazon Business</a></li>
+            <li><a href="#">Sell apps on Amazon</a></li>
+            <li><a href="#">Become an Affiliate</a></li>
+            <li><a href="#">Advertise Your Products</a></li>
+            <li><a href="#">Self-Publish with Us</a></li>
+            <li><a href="#">Host an Amazon Hub</a></li>
+          </ul>
+        </div>
+
+        <div class="navFooterCol">
+          <div class="navFooterColHead">Amazon Payment Products</div>
+          <ul>
+            <li><a href="#">Amazon Business Card</a></li>
+            <li><a href="#">Shop with Points</a></li>
+            <li><a href="#">Reload Your Balance</a></li>
+            <li><a href="#">Amazon Currency Converter</a></li>
+          </ul>
+        </div>
+
+        <div class="navFooterCol">
+          <div class="navFooterColHead">Let Us Help You</div>
+          <ul>
+            <li><a href="#">Amazon and COVID-19</a></li>
+            <li><a href="#">Your Account</a></li>
+            <li><a href="orders.html">Your Orders</a></li>
+            <li><a href="#">Shipping Rates &amp; Policies</a></li>
+            <li><a href="orders.html">Returns &amp; Replacements</a></li>
+            <li><a href="#">Manage Your Content and Devices</a></li>
+            <li><a href="#">Help</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sub-bar: Logo + Language / Country Selection -->
+    <div class="navFooterLine">
+      <div class="navFooterSubBar">
+        <a href="amazon.html" class="navFooterLogoLink" aria-label="Amazon Home">
+          <img class="navFooterLogo" src="images/amazon-logo-white.png" alt="Amazon Logo">
+        </a>
+        <div class="navFooterSelectGroup">
+          <button class="navFooterSelectBtn" aria-label="Choose a language">
+            <svg class="navFooterGlobe" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+            </svg>
+            <span>English</span>
+            <span class="navFooterArrows">▲▼</span>
+          </button>
+          <button class="navFooterSelectBtn" aria-label="Choose a currency">
+            <span>$ USD - U.S. Dollar</span>
+          </button>
+          <button class="navFooterSelectBtn" aria-label="Choose a country">
+            <span class="navFooterFlag">
+              <svg viewBox="0 0 24 16" width="18" height="12">
+                <rect width="24" height="16" fill="#b22234"/>
+                <path d="M0,1.23h24 M0,3.69h24 M0,6.15h24 M0,8.61h24 M0,11.07h24 M0,13.53h24" stroke="#ffffff" stroke-width="1.23"/>
+                <rect width="9.6" height="8.61" fill="#3c3b6e"/>
+              </svg>
+            </span>
+            <span>United States</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Deep Dark Micro-services Directory -->
+    <div class="navFooterServices">
+      <div class="navFooterServicesGrid">
+        <a href="#" class="navFooterServiceItem">
+          <span class="navFooterServiceTitle">Amazon Music</span>
+          <span class="navFooterServiceDesc">Stream millions<br>of songs</span>
+        </a>
+        <a href="#" class="navFooterServiceItem">
+          <span class="navFooterServiceTitle">Amazon Ads</span>
+          <span class="navFooterServiceDesc">Reach customers<br>wherever they spend their time</span>
+        </a>
+        <a href="#" class="navFooterServiceItem">
+          <span class="navFooterServiceTitle">6pm</span>
+          <span class="navFooterServiceDesc">Score deals<br>on fashion brands</span>
+        </a>
+        <a href="#" class="navFooterServiceItem">
+          <span class="navFooterServiceTitle">AbeBooks</span>
+          <span class="navFooterServiceDesc">Books, art<br>&amp; collectibles</span>
+        </a>
+        <a href="#" class="navFooterServiceItem">
+          <span class="navFooterServiceTitle">ACX</span>
+          <span class="navFooterServiceDesc">Audiobook Publishing<br>Made Easy</span>
+        </a>
+        <a href="#" class="navFooterServiceItem">
+          <span class="navFooterServiceTitle">Sell on Amazon</span>
+          <span class="navFooterServiceDesc">Start a Selling<br>Account</span>
+        </a>
+        <a href="#" class="navFooterServiceItem">
+          <span class="navFooterServiceTitle">Veeqo</span>
+          <span class="navFooterServiceDesc">Shipping Software<br>Inventory Management</span>
+        </a>
+
+        <a href="#" class="navFooterServiceItem">
+          <span class="navFooterServiceTitle">Amazon Business</span>
+          <span class="navFooterServiceDesc">Everything For<br>Your Business</span>
+        </a>
+        <a href="#" class="navFooterServiceItem">
+          <span class="navFooterServiceTitle">Amazon Global</span>
+          <span class="navFooterServiceDesc">Ship Orders<br>Internationally</span>
+        </a>
+        <a href="#" class="navFooterServiceItem">
+          <span class="navFooterServiceTitle">Home Services</span>
+          <span class="navFooterServiceDesc">Experienced Pros<br>Happiness Guarantee</span>
+        </a>
+        <a href="#" class="navFooterServiceItem">
+          <span class="navFooterServiceTitle">Amazon Web Services</span>
+          <span class="navFooterServiceDesc">Scalable Cloud<br>Computing Services</span>
+        </a>
+        <a href="#" class="navFooterServiceItem">
+          <span class="navFooterServiceTitle">Audible</span>
+          <span class="navFooterServiceDesc">Listen to Books &amp; Original<br>Audio Performances</span>
+        </a>
+        <a href="#" class="navFooterServiceItem">
+          <span class="navFooterServiceTitle">Box Office Mojo</span>
+          <span class="navFooterServiceDesc">Find Movie<br>Box Office Data</span>
+        </a>
+        <a href="#" class="navFooterServiceItem">
+          <span class="navFooterServiceTitle">Goodreads</span>
+          <span class="navFooterServiceDesc">Book reviews<br>&amp; recommendations</span>
+        </a>
+
+        <a href="#" class="navFooterServiceItem">
+          <span class="navFooterServiceTitle">IMDb</span>
+          <span class="navFooterServiceDesc">Movies, TV<br>&amp; Celebrities</span>
+        </a>
+        <a href="#" class="navFooterServiceItem">
+          <span class="navFooterServiceTitle">IMDbPro</span>
+          <span class="navFooterServiceDesc">Get Info Entertainment<br>Professionals Need</span>
+        </a>
+        <a href="#" class="navFooterServiceItem">
+          <span class="navFooterServiceTitle">Kindle Direct Publishing</span>
+          <span class="navFooterServiceDesc">Indie Digital &amp; Print Publishing<br>Made Easy</span>
+        </a>
+        <a href="#" class="navFooterServiceItem">
+          <span class="navFooterServiceTitle">Prime Video Direct</span>
+          <span class="navFooterServiceDesc">Video Distribution<br>Made Easy</span>
+        </a>
+        <a href="#" class="navFooterServiceItem">
+          <span class="navFooterServiceTitle">Shopbop</span>
+          <span class="navFooterServiceDesc">Designer<br>Fashion Brands</span>
+        </a>
+        <a href="#" class="navFooterServiceItem">
+          <span class="navFooterServiceTitle">Woot!</span>
+          <span class="navFooterServiceDesc">Deals and<br>Shenanigans</span>
+        </a>
+        <a href="#" class="navFooterServiceItem">
+          <span class="navFooterServiceTitle">Zappos</span>
+          <span class="navFooterServiceDesc">Shoes &amp;<br>Clothing</span>
+        </a>
+
+        <a href="#" class="navFooterServiceItem">
+          <span class="navFooterServiceTitle">Ring</span>
+          <span class="navFooterServiceDesc">Smart Home<br>Security Systems</span>
+        </a>
+        <a href="#" class="navFooterServiceItem">
+          <span class="navFooterServiceTitle">eero WiFi</span>
+          <span class="navFooterServiceDesc">Stream 4K Video<br>in Every Room</span>
+        </a>
+        <a href="#" class="navFooterServiceItem">
+          <span class="navFooterServiceTitle">Blink</span>
+          <span class="navFooterServiceDesc">Smart Security<br>for Every Home</span>
+        </a>
+        <a href="#" class="navFooterServiceItem navFooterColPos3">
+          <span class="navFooterServiceTitle">Neighbors App</span>
+          <span class="navFooterServiceDesc">Real-Time Crime<br>&amp; Safety Alerts</span>
+        </a>
+        <a href="#" class="navFooterServiceItem navFooterColPos4">
+          <span class="navFooterServiceTitle">PillPack</span>
+          <span class="navFooterServiceDesc">Pharmacy<br>Simplified</span>
+        </a>
+        <a href="#" class="navFooterServiceItem navFooterColPos5">
+          <span class="navFooterServiceTitle">Amazon Renewed</span>
+          <span class="navFooterServiceDesc">Refurbished tech<br>you can trust</span>
+        </a>
+      </div>
+
+      <!-- Legal / Copyright Footer -->
+      <div class="navFooterLegal">
+        <ul class="navFooterLegalLinks">
+          <li><a href="#">Conditions of Use</a></li>
+          <li><a href="#">Privacy Notice</a></li>
+          <li><a href="#">Consumer Health Data Privacy Disclosure</a></li>
+          <li>
+            <a href="#" class="navFooterPrivacyChoice">
+              <span>Your Ads Privacy Choices</span>
+              <svg class="navFooterPrivacyIcon" width="29" height="14" viewBox="0 0 29 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M7 1h15a6 6 0 0 1 0 12H7A6 6 0 0 1 7 1z" fill="#0073BB"/>
+                <path d="M7 2a5 5 0 0 0 0 10V2zm15 10a5 5 0 0 0 0-10v10z" fill="#0073BB"/>
+                <path d="M5.5 5.5l2 2 3.5-3.5" stroke="#fff" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M21 5l-3 3m0-3l3 3" stroke="#fff" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </li>
+        </ul>
+        <div class="navFooterCopyright">
+          &copy; 1996&ndash;2026, Amazon.com, Inc. or its affiliates
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Smooth Back To Top Script -->
+  <script>
+    const backToTopBtn = document.getElementById('navBackToTop');
+    if (backToTopBtn) {
+      backToTopBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
+  </script>
+
+  <!-- Sidebar & Smart Scroll Header Integration -->
+  <script type="module" src="scripts/shared/amazon-sidebar.js"></script>
+
+  <!-- Products Catalog Script -->
+  <script type="module" src="scripts/products-page.js"></script>
+</body>
+
+</html>

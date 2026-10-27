@@ -71,7 +71,7 @@ export class Clothing extends Product {
   }
 }
 
-class Appliance extends Product {
+export class Appliance extends Product {
   constructor(productDetails) {
     super(productDetails);
     this.instructionsLink = productDetails.instructionsLink;

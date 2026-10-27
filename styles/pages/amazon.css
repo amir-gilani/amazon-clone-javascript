@@ -221,18 +221,17 @@ li.gwm-window-tile {
   }
 }
 
+/* Authentic Amazon 2026 Quad Category Cards */
 .quad-category-card {
   background: #ffffff;
   border: 1px solid #e7e7e7;
   border-radius: 8px;
-  padding: 20px 16px 16px 16px;
+  padding: 20px 20px 24px 20px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   box-shadow: none;
-  transition: border-color 0.2s ease, transform 0.2s ease;
-  min-height: 430px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
   position: relative;
 }
 
@@ -243,73 +242,51 @@ li.gwm-window-tile {
 
 .quad-card-header {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
   margin-bottom: 14px;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
 }
 
 .quad-card-title {
-  font-size: 19px;
+  font-size: 21px;
   font-weight: 700;
   color: #0f1111;
   margin: 0;
-  line-height: 1.28;
+  line-height: 1.25;
   cursor: pointer;
   flex: 1;
   padding-right: 8px;
   transition: color 0.15s ease;
 }
 
-.quad-card-title:hover {
+.quad-card-header:hover .quad-card-title {
   color: #c7511f;
 }
 
-/* Arrow / Chevron Button on top-right */
-.quad-card-arrow-btn {
-  background: #ffffff;
-  border: 1px solid #d5d9d9;
-  font-size: 20px;
-  font-weight: 700;
-  color: #0f1111;
-  cursor: pointer;
-  display: flex;
+/* Sleek Right Chevron Arrow */
+.quad-card-arrow {
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 34px;
-  height: 34px;
-  border-radius: 50%;
-  transition: background-color 0.15s ease, transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
-  outline: none;
-  padding: 0;
+  color: #0f1111;
+  margin-top: 3px;
   flex-shrink: 0;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  transition: transform 0.15s ease, color 0.15s ease;
 }
 
-.quad-card-arrow-btn:hover {
-  background-color: #f0f2f2;
-  border-color: #a6a6a6;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
-  transform: scale(1.08);
+.quad-card-header:hover .quad-card-arrow {
+  transform: translateX(4px);
+  color: #c7511f;
 }
 
-.quad-card-arrow-btn:active {
-  background-color: #e3e6e6;
-  transform: scale(0.96);
-}
-
-/* 2x2 Grid of 4 Products */
+/* 2x2 Grid of Exactly 4 Products */
 .quad-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(2, auto);
-  gap: 12px 14px;
-  flex: 1;
-  transition: opacity 0.2s ease, transform 0.2s ease;
-}
-
-.quad-grid.fade-out {
-  opacity: 0;
-  transform: scale(0.96);
+  gap: 14px 14px;
 }
 
 /* Individual Product in 4-pack */
@@ -320,13 +297,7 @@ li.gwm-window-tile {
   color: #0f1111;
   cursor: pointer;
   border-radius: 8px;
-  padding: 4px;
   transition: background-color 0.15s ease;
-  position: relative;
-}
-
-.quad-item:hover {
-  background-color: #fafafa;
 }
 
 .quad-item-img-box {
@@ -347,77 +318,27 @@ li.gwm-window-tile {
   max-width: 90%;
   max-height: 90%;
   object-fit: contain;
-  transition: transform 0.25s ease;
+  transition: transform 0.2s ease;
 }
 
 .quad-item:hover .quad-item-img {
-  transform: scale(1.06);
+  transform: scale(1.05);
 }
 
 .quad-item-label {
-  font-size: 12px;
-  font-weight: 500;
+  font-size: 13px;
+  font-weight: 400;
   color: #0f1111;
   margin-top: 6px;
-  line-height: 1.3;
+  line-height: 1.25;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  transition: color 0.15s ease;
 }
 
-.quad-item-price {
-  font-size: 11px;
-  font-weight: 700;
-  color: #565959;
-  margin-top: 2px;
-}
-
-.quad-item-add-btn {
-  margin-top: 5px;
-  font-size: 11px;
-  font-weight: 600;
-  background-color: #ffd814;
-  border: 1px solid #fcd200;
-  border-radius: 12px;
-  padding: 3px 8px;
-  cursor: pointer;
-  align-self: flex-start;
-  transition: background-color 0.15s ease, transform 0.1s ease;
-  outline: none;
-}
-
-.quad-item-add-btn:hover {
-  background-color: #f7ca00;
-  transform: scale(1.04);
-}
-
-/* Card Footer */
-.quad-card-footer {
-  margin-top: 14px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.quad-card-link {
-  font-size: 13px;
-  color: #007185;
-  text-decoration: none;
-  font-weight: 500;
-}
-
-.quad-card-link:hover {
+.quad-item:hover .quad-item-label {
   color: #c7511f;
-  text-decoration: underline;
-}
-
-.quad-page-badge {
-  font-size: 11px;
-  color: #565959;
-  font-weight: 600;
-  background: #f0f2f2;
-  padding: 2px 7px;
-  border-radius: 10px;
 }
 
 /* ==========================================================================

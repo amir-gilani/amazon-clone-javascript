@@ -1,4 +1,4 @@
-import { orders, saveOrders } from "../data/order.js";
+import { orders } from "../data/order.js";
 import { getProduct, loadProductsFetch, rawProductsCatalog } from "../data/products.js";
 import formatCurrency from "./utils/money.js";
 import { addToCart, calculateCartQuantity } from "../data/cart.js";
@@ -132,7 +132,7 @@ function renderOrderProductsHTML(order) {
         <div class="product-quantity">
           Quantity: ${orderProduct.quantity}
         </div>
-        <button class="buy-again-button button-primary js-buy-again" data-order-id="${order.id}" data-product-id="${product.id}">
+        <button class="buy-again-button button-primary js-buy-again" data-product-id="${product.id}">
           <img class="buy-again-icon" src="images/icons/buy-again.png" alt="Buy again">
           <span class="buy-again-message">Buy it again</span>
         </button>
@@ -155,56 +155,25 @@ function attachBuyAgainEvents() {
   document.querySelectorAll(".js-buy-again").forEach((btn) => {
     btn.addEventListener("click", () => {
       const productId = btn.dataset.productId;
-      const orderId = btn.dataset.orderId;
 
-      // 1. Add item to cart & update cart header count
-      addToCart(productId, 1);
-      updateCartQuantity();
-
-      // 2. Increment quantity in order history and persist to localStorage
-      let newQty = null;
-      if (orderId && orders) {
-        const order = orders.find((o) => o.id === orderId);
-        if (order && order.products) {
-          const orderProduct = order.products.find((p) => p.productId === productId);
-          if (orderProduct) {
-            orderProduct.quantity = (Number(orderProduct.quantity) || 1) + 1;
-            newQty = orderProduct.quantity;
-            saveOrders();
-          }
-        }
+      // 1. Add product to cart
+      if (productId) {
+        addToCart(productId, 1);
       }
 
-      // 3. Update the quantity element directly above the "Buy it again" button
-      const detailsEl = btn.closest(".product-details");
-      if (detailsEl) {
-        const qtyEl = detailsEl.querySelector(".product-quantity");
-        if (qtyEl) {
-          if (newQty !== null) {
-            qtyEl.textContent = `Quantity: ${newQty}`;
-          } else {
-            const currentQty = parseInt(qtyEl.textContent.replace(/\D/g, "")) || 1;
-            qtyEl.textContent = `Quantity: ${currentQty + 1}`;
-          }
-        }
-      }
-
-      // 4. Visual feedback on button
+      // 2. Visual feedback on button
       const msg = btn.querySelector(".buy-again-message");
       if (msg) {
-        const orig = msg.textContent;
         msg.textContent = "✓ Added";
         btn.style.backgroundColor = "#2ecc71";
         btn.style.borderColor = "#27ae60";
         btn.style.color = "#ffffff";
-
-        setTimeout(() => {
-          msg.textContent = orig;
-          btn.style.backgroundColor = "";
-          btn.style.borderColor = "";
-          btn.style.color = "";
-        }, 1500);
       }
+
+      // 3. Redirect back to products page so user can repeat the purchasing process
+      setTimeout(() => {
+        window.location.href = "products.html";
+      }, 250);
     });
   });
 }
